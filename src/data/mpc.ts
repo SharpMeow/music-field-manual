@@ -201,8 +201,115 @@ const MPC_CORE: Section[] = [
     part: "mpc",
     title: "Every button, and what Shift does to it",
     kicker: "Search this",
-    blurb: "Gray text on a button is its Shift function. Double-press either Shift and every button with a secondary function flashes for a few seconds. Verified identical between the 3.7 and 3.9 manuals.",
+    blurb: "Gray text on a button is its Shift function. Double-press either Shift and every button with a secondary function flashes for a few seconds. Double-tap a button for the same Shift function. The next chapter is the rest of the speed.",
     blocks: [{ type: "widget", name: "buttons" }],
+  },
+  {
+    slug: "tricks",
+    part: "mpc",
+    title: "Shortcuts, tricks, things the manual buries",
+    kicker: "Hands faster than menus",
+    blurb: "What YouTube actually earns its keep on: double-taps, Shift+hold, the Q-Link modes people think are broken, and the three ways Flatten is hiding. Checked against 3.9.1 on this XL.",
+    blocks: [
+      {
+        type: "lead",
+        text: "DOUBLE-TAP a mode button = its Shift function. DOUBLE-PRESS Shift = every secondary label flashes. Shift + jog or Q-Link = fine resolution. The XL has Shift on both sides so this is one-handed.",
+      },
+      {
+        type: "h",
+        text: "Shift and double-tap",
+      },
+      {
+        type: "kvs",
+        items: [
+          { k: "Double-tap = Shift", v: "Main, Browse, Mixer, Grid, Chop, 16 Levels, Full Level, Touch Strip, Touch FX — tap twice fast instead of holding Shift. Track Edit pages too: Shift+the same tab jumps back instead of cycling the whole row." },
+          { k: "Two Shifts", v: "Left and right of the pads. One-handed Shift+Play, Shift+Rec (Retro Rec), Shift+Erase (Clear Track) is the point of the XL layout, not a decoration." },
+          { k: "Shift + jog / Q-Link", v: "Fine. Tempo by 0.1, start point by samples, cutoff without leaping. If a Q-Link 'does nothing,' Screen mode has an arrow — you are not on the page that parameter lives on. Scroll until the arrow dies." },
+          { k: "Shift + cursor in Grid", v: "Up/down zoom vertically, left/right zoom time. Faster than pinch if you are already on the hardware." },
+          { k: "Hold Main", v: "Flick through tracks without leaving Main. Hold Track Mute, mute, release — you never left the screen you were on." },
+        ],
+      },
+      {
+        type: "h",
+        text: "Q-Links people think are broken",
+      },
+      {
+        type: "kvs",
+        items: [
+          { k: "Hold Q-Links → Volume / Pan / Sends", v: "Sixteen channel faders, or pans, or sends, on the knobs. Mixing without the mixer. The XL has all 16 physical; you are not banking like a Live III." },
+          { k: "Hold Q-Links → Step Sequencer", v: "Knobs sit on the step row. Twist = enter that step at that velocity. Drum Seq + this knob is the 1988 workflow with OLEDs." },
+          { k: "Macros", v: "Q-Link Edit, Learn, then + to stack a second parameter on the same knob. Flip inverts one so cutoff up / resonance down is one twist. Momentary = spring back when you let go. Latch = it stays. Write automation on W, then R." },
+          { k: "Popup on/off", v: "In Q-Link Edit, the white-on-black toggle stops the giant value popup so you can see the pads while you twist. Performers turn it off; editors leave it on." },
+          { k: "Q-Link Pad Grid", v: "Hold Set → step 14. Sixteen step buttons become Learn-able triggers for any parameter (filter, Flex Beat, a send). Neon Vines' Flex Beat on the pad grid is this mode. Swipe-assign is faster than one-by-one." },
+        ],
+      },
+      {
+        type: "h",
+        text: "Strip, Touch FX, 16 Levels, Full Level",
+      },
+      {
+        type: "kvs",
+        items: [
+          { k: "Tap Touch Strip to cycle", v: "You do not have to hold it. Repeated taps walk Q-Link, Pad Level, Track Level, Notes, Strum, Pitch, Mod, Sustain, Expression, Crossfader. Shift+Touch Strip is Config. Touch FX does not cycle this way — hold Touch FX to pick a preset, double-tap for its parameters." },
+          { k: "16 Levels: press the pad first", v: "Pad, then 16 Levels, or it grabs whatever was last selected. Types: Velocity, Tune, Filter, Layer, Slice, Articulation, Attack, Decay, Probability, Ratchet. Record it (Rec/Overdub) and the sixteen values print as events. Probability and Ratchet across 16 pads is a generator, not a toy." },
+          { k: "Full Level vs Set Level", v: "Full Level = 127. Shift+Full Level (or double-tap) is Set Level: a fixed velocity you choose, or Learn from one pad hit. MIDI keyboards do not see Full Level. Pads do." },
+          { k: "Partial Preset (3.7+)", v: "Track Edit → Samples → Partial Preset. Save the whole pad synth state. The MPCe one people hunt for is Partial Preset → MPCe → 4 Quadrant Xfade, instead of wiring Layer Play + matrix by hand every kit." },
+        ],
+      },
+      {
+        type: "h",
+        text: "Sampling, flatten, and the browser",
+      },
+      {
+        type: "kvs",
+        items: [
+          { k: "Flatten is in three places", v: "[Shift]+[Stem]. Track Edit pencil → Flatten Pad. People still say 'they removed it in 3.' They moved it. Tail 1–2 s. It prints pad inserts and warp, not the bus." },
+          { k: "Shift-drag in Browse", v: "Onto a pad = that pad. Shift-drag = a specific layer. Shift+Browse = Sample Assign (press pad green, double-tap sample)." },
+          { k: "Browser Warp toggle", v: "Auditions at project tempo when the file has embedded BPM. Turn it off to hear the record as a record." },
+          { k: "Shift + folder icon", v: "Makes a browser shortcut. Build a TEMPLATE folder this way. Save As Template still exists (Save → Save as template); User Template at boot. Multiple templates = a folder, not the one-slot factory." },
+          { k: "Shortcuts bar", v: "Drag Main, Browse, Grid onto the shortcuts strip. Your real home screen." },
+          { k: "Show All Files", v: "Then you can see Name_[ProjectData]. Shift+Delete those only after the .xpj is backed up. This is how people reclaim a full SSD. It is also how people delete the audio and keep the hollow project." },
+        ],
+      },
+      {
+        type: "h",
+        text: "Sequence, arrange, live",
+      },
+      {
+        type: "kvs",
+        items: [
+          { k: "Retro Rec", v: "[Shift]+[Rec], or the top pull-down Recall. Captures MIDI you played while not recording. There is a sample-side Keep/Recall in Sampler; do not confuse them." },
+          { k: "Odd lengths", v: "Sequence bars can be 3 or 5. Last Step 12, 15, 7 on the step row. 'Even bar' is a habit, not a rule." },
+          { k: "Locators", v: "Six named. Playhead field → Locator tab, or Shift+Set. In Arrange, Shift shows them. Loop On between two locators is a section loop without touching the brace." },
+          { k: "3.9 loop brace", v: "Cut / copy / paste / duplicate use the brace as the selection. Double-tap the brace for the full edit menu. Paste merge time inserts without overwriting. Insert Clip Row punches a matrix row onto the timeline." },
+          { k: "Song → Seq", v: "Song Mode, Convert > Seq. Then you can edit fills that Song Mode will not let you touch." },
+          { k: "Arrange → clip", v: "Loop the region, Matrix, hold Arrange, Copy, hold destination row, Paste, Trim Clip. A linear take becomes a launchable clip." },
+          { k: "Pad Color", v: "Menu → Pad Color. Kick red, snare blue, hats yellow. Live, in the dark, this is not cosmetic." },
+          { k: "Stop twice", v: "Silences ringing tails. One Stop is transport. Two is panic." },
+        ],
+      },
+      {
+        type: "h",
+        text: "Quiet ones",
+      },
+      {
+        type: "kvs",
+        items: [
+          { k: "Layer a kit onto another track", v: "I/O on a drum track can Send to another drum track so one performance fires two kits. External version: Send to a MIDI track pointed at a 5-pin synth." },
+          { k: "Human snare", v: "Two snare samples as layers, Random or Velocity, tiny pitch/start randomization on Samples page 4, then Flatten if CPU complains. Old trick. Still the one." },
+          { k: "Pad Perform + Arp", v: "Chords on pads, Arp in the Note Repeat window (plugin/keygroup). Record it, then edit the grid — the arp is now events you can delete one of." },
+          { k: "TC per pad", v: "Timing Correct → Hitting Pad Selects All Events → press the hat → swing 58. Kick stays 50. This is the classic, not swing on the sequence." },
+          { k: "Controller Mode as a disk", v: "USB-C, Controller Mode, the computer sees the XL's drives. File copy without a stick. Save the standalone project first; this mode closes it." },
+          { k: "Empty vs Recents vs Auto-Load", v: "Preferences → Project Load/Save. Empty Project + Recents in the dialog is the studio default. Auto-Load last project is the desk default. Off before a gig." },
+        ],
+      },
+      {
+        type: "callout",
+        kind: "tip",
+        title: "Where this list was stolen from",
+        text: "The 23-workflow video (macros, Flip, strip tap, Partial Preset, locators), Live III / XL walkthroughs (double-tap = Shift, Q-Link Step Seq, Flex Beat on Pad Grid), 16 Levels deep dives (press the pad first, print Rec), and the flatten-is-not-gone tutorials. If a YouTube still says Program Edit, it is pre-2025. Track Edit.",
+      },
+    ],
   },
   {
     slug: "hardware",

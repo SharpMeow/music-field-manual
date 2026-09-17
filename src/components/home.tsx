@@ -145,7 +145,7 @@ export function Home() {
         <PartCard
           kicker="Part 1"
           title="MPC XL"
-          body="Tonight: setup and a loop. Then years of craft, then the technical layer: 960 PPQ swing math, the DSP graph, warp algorithms, the 32-slot matrix, CV, Stems Pro."
+          body="Tonight: setup and a loop. Shortcuts and buried tricks next to the button list. Then years of craft, then the technical layer: 960 PPQ, the DSP graph, warp, matrix, CV."
           href={{ part: "mpc", slug: "setup" }}
           icon={<AudioLines className="size-4" strokeWidth={1.75} />}
           plate={
