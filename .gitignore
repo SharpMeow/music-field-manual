@@ -19,6 +19,6 @@ tmp/
 .pglite/
 .cache/
 .node_modules.lock
-AGENTS.md
-AGENTS.project.md
+/AGENTS.md
+/AGENTS.project.md
 attachments/
