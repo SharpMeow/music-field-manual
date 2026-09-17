@@ -101,6 +101,12 @@ export const BUTTONS: ButtonRow[] = [
     press: "Cycle USB audio input",
     shift: "Cycle backwards; hold to choose on screen",
   },
+  { name: "Tracks (Channel)", press: "Channel Command: pick tracks", shift: "—" },
+  { name: "Outputs (Channel)", press: "Channel Command: analog and USB outs", shift: "—" },
+  { name: "Returns (Channel)", press: "Channel Command: send returns", shift: "—" },
+  { name: "Submixes (Channel)", press: "Channel Command: submix buses", shift: "—" },
+  { name: "TRK − / TRK +", press: "Step the Channel Command target", shift: "—" },
+  { name: "Track FX (Channel)", press: "Inserts for the current Channel Command target", shift: "—" },
 ];
 
 export const STEP_MODES = [

@@ -20,7 +20,7 @@ If you are editing this with a coding agent, start with [`docs/AGENTS.md`](docs/
 
 ## What you actually get
 
-- **MPC XL:** day-one setup, a 12-step lo-fi loop, every button and what Shift does, a hardware map, Track Edit, swing, the dirt chain, sidechain, resampling, arrangement, firmware 3.9.1, traps
+- **MPC XL:** day-one setup, a 12-step lo-fi loop, every button and what Shift does, a hardware map with the actual I/O, mixer and Channel Command, Track Edit, 3.9 oscillators, Sample Edit past Chop, the 16-step row, Q-Links / Touch FX / XY, swing, the dirt chain, sidechain, plugins, MIDI/CV, resampling, arrangement, live performance, three recipes after the first loop, firmware 3.9.1, traps
 - **Jackson SL2 DX:** what you own, Floyd survival, the 5-way, eight chords you can hear, a one-minute change drill, metronome, A minor pentatonic box 1, twelve weeks, songs by what they teach
 - **Dispatch:** curated firmware and guitar notes, dated, with sources. Filter by machine. The guitar has no firmware. That is written down on purpose.
 - **Print edition:** the original 27-page PDF, readable in the app (and downloadable)

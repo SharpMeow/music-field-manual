@@ -142,7 +142,7 @@ export function Home() {
         <PartCard
           kicker="Part 1"
           title="MPC XL"
-          body="Setup, the fused track model, a 12-step lo-fi recipe, every button, hardware nobody explains, dirt, traps."
+          body="Day-one setup, the fused track model, a 12-step loop, then the real machine: mixer, step row, Q-Links, oscillators, MIDI/CV, plugins, live, three recipes, traps."
           href={{ part: "mpc", slug: "setup" }}
           icon={<AudioLines className="size-4" strokeWidth={1.75} />}
           plate={
