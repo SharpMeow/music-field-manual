@@ -6,6 +6,10 @@ The XL ships with film on the screen and about 30 GB of content locked behind re
 
 Get a loop out of the box tonight. Learn the machines properly after that.
 
+![Tonight: MPC pad 1 armed, then the Jackson](docs/tonight.png)
+
+![How to live in the book](docs/legend.png)
+
 No account. Checklists, notes, pickup position, and the change-drill log stay in this browser.
 
 **[github.com/SharpMeow/music-field-manual](https://github.com/SharpMeow/music-field-manual)** · MIT · unofficial, not affiliated with Akai, inMusic, Jackson, or Fender
