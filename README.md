@@ -56,7 +56,7 @@ If you are generating a companion for a private pair of instruments, **prefer th
 - **Every guitar, every sampler.** The SL2 DX and the XL are specific. A "works with any MPC" rewrite will lie.
 - **Official support.** Akai, inMusic, Jackson, Fender. Not us. If the unit is dead, their page wins.
 - **A live news firehose.** Dispatch is curated. A scraper will rot, and then it will lie. Dates or it does not ship.
-- **Stealth, cheating, or anything that needs to hide.** This is a manual. It sits in a tab with a title. If you need to hide, stop.
+- **Anything that must be invisible.** This is a manual. It sits in a tab with a title. If you need to hide, stop.
 
 ### How a coding agent should use this repo
 
