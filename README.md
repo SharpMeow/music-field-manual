@@ -20,7 +20,7 @@ If you are editing this with a coding agent, start with [`docs/AGENTS.md`](docs/
 
 ## What you actually get
 
-- **MPC XL:** day-one setup, a 12-step loop, every button, hardware and I/O, mixer, Track Edit, 3.9 oscillators, Sample Edit, the 16-step row, Q-Links / Touch FX, dirt, sidechain, plugins, MIDI/CV, live, three recipes — then a **36-month plan**, drum language, 808s, harmony, kits, library, mixing, form, boom-bap / 4/4 / R&B / cues, automation, CPU hygiene, hybrid DAW, finishing, listening, sessions, firmware 3.9.1, traps
+- **MPC XL:** day-one through a 36-month plan, then the technical layer — 960 PPQ swing math, the audio engine, 32-slot matrix / followers / MPCe, warp algorithms, filter topologies, keygroup zones, CV volts, Clip Matrix internals, MIDI clock domains, the DSP graph, Stems Pro, grid vs list events. Firmware 3.9.1, traps.
 - **Jackson SL2 DX:** what you own, Floyd survival, the 5-way, eight chords you can hear, a one-minute change drill, metronome, A minor pentatonic box 1, twelve weeks, songs by what they teach
 - **Dispatch:** curated firmware and guitar notes, dated, with sources. Filter by machine. The guitar has no firmware. That is written down on purpose.
 - **Print edition:** the original 27-page PDF, readable in the app (and downloadable)
@@ -107,7 +107,7 @@ npm run build
 ## Layout
 
 ```
-src/data/          chapters (mpc.ts, mpc-craft.ts, mpc-years.ts, guitar.ts), buttons, chords, dispatch
+src/data/          chapters (mpc.ts, mpc-craft.ts, mpc-tech.ts, mpc-years.ts, guitar.ts), buttons, chords, dispatch
 src/components/    widgets and the studio shell
 src/routes/        /   /news   /manual   /mpc/:slug   /guitar/:slug
 src/lib/           local store, Web Audio, theme

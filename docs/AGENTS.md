@@ -7,7 +7,7 @@ The human-facing promise is: finish a loop the night the box opens, then use the
 ## Why edit this repo instead of starting over
 
 - Curriculum is TypeScript, not Markdown in a CMS. `src/data/types.ts` defines `Section`, `Block`, and `WidgetName`.
-- Chapters: `src/data/mpc.ts` (core machine), `src/data/mpc-craft.ts` (years of craft), `src/data/mpc-years.ts` (36-month plan), `src/data/guitar.ts`. Reference tables: `buttons.ts`, `chords.ts`. Dispatch: `news.ts`. Search concatenates those in `catalog.ts`.
+- Chapters: `src/data/mpc.ts` (core machine), `src/data/mpc-craft.ts` (years of craft), `src/data/mpc-tech.ts` (engine, ticks, matrix, CV), `src/data/mpc-years.ts` (36-month plan), `src/data/guitar.ts`. Reference tables: `buttons.ts`, `chords.ts`. Dispatch: `news.ts`. Search concatenates those in `catalog.ts`.
 - Routes follow the book: `/`, `/news`, `/manual`, `/mpc/$slug`, `/guitar/$slug`. Unknown slugs must 404, not render an empty studio.
 - Interactive pieces are widgets in `src/components/`, mounted by name from a `{ type: "widget", name }` block. Keep audio user-initiated (`src/lib/audio.ts`).
 - Progress is `localStorage` via Zustand (`src/lib/store.ts`, persist key `xl-field-manual`). No login, no database, no sync.
@@ -26,7 +26,7 @@ An agent that treats this as "paste the official manual into a page" will throw 
 
 | You want to… | Touch |
 |---|---|
-| Add or rewrite an XL chapter | `src/data/mpc.ts` (deck) or `src/data/mpc-craft.ts` (craft / years) |
+| Add or rewrite an XL chapter | `src/data/mpc.ts` (deck) or `src/data/mpc-craft.ts` (craft / years) or `src/data/mpc-tech.ts` (engine / ticks / CV) |
 | XL 36-month plan | `src/data/mpc-years.ts` |
 | New firmware / guitar note | `src/data/news.ts` |
 | Chord, week, or song | `src/data/chords.ts` |

@@ -1,5 +1,8 @@
 import type { Section } from "./types";
 import { MPC_CRAFT } from "./mpc-craft";
+import { MPC_TECH } from "./mpc-tech";
+
+const TAIL = new Set(["updates", "traps", "repair"]);
 
 const MPC_CORE: Section[] = [
   {
@@ -797,4 +800,9 @@ const MPC_CORE: Section[] = [
   },
 ];
 
-export const MPC_SECTIONS: Section[] = [...MPC_CORE, ...MPC_CRAFT];
+export const MPC_SECTIONS: Section[] = [
+  ...MPC_CORE.filter((s) => !TAIL.has(s.slug)),
+  ...MPC_CRAFT,
+  ...MPC_TECH,
+  ...MPC_CORE.filter((s) => TAIL.has(s.slug)),
+];
