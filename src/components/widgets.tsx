@@ -7,7 +7,7 @@ import { Metronome, StrumPattern } from "@/components/metronome";
 import { NotesPad } from "@/components/notes-pad";
 import { Pentatonic } from "@/components/pentatonic";
 import { PickupSwitch } from "@/components/pickup-switch";
-import { PracticePlan, SongList } from "@/components/practice-plan";
+import { PracticePlan, SongList, MpcYears } from "@/components/practice-plan";
 import { NewsFeed } from "@/components/news-feed";
 import { SwingDemo } from "@/components/swing";
 import type { Part, WidgetName } from "@/data/types";
@@ -46,5 +46,7 @@ export function Widget({ name, part }: { name: WidgetName; part: Part }) {
           <NewsFeed part={part} />
         </div>
       );
+    case "years":
+      return <MpcYears />;
   }
 }

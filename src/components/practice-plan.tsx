@@ -1,26 +1,31 @@
 import { DoneMark } from "@/components/done-mark";
 import { Progress } from "@/components/ui/progress";
 import { SONGS, WEEKS } from "@/data/chords";
+import { MPC_YEARS } from "@/data/mpc-years";
 import { useField, useHasHydrated } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
-export function PracticePlan() {
+function CheckPlan({
+  items,
+}: {
+  items: { id: string; label: string; title: string; body: string }[];
+}) {
   const weekDone = useField((s) => s.weekDone);
   const toggle = useField((s) => s.toggleWeek);
   const hydrated = useHasHydrated();
-  const done = hydrated ? WEEKS.filter((w) => weekDone[w.id]).length : 0;
-  const pct = Math.round((done / WEEKS.length) * 100);
+  const done = hydrated ? items.filter((w) => weekDone[w.id]).length : 0;
+  const pct = Math.round((done / items.length) * 100);
 
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center justify-between gap-4">
         <p className="font-mono text-xs uppercase tracking-widest text-muted">
-          {done}/{WEEKS.length} blocks checked
+          {done}/{items.length} blocks checked
         </p>
         <Progress value={pct} className="max-w-40" />
       </div>
       <ol className="flex flex-col gap-3">
-        {WEEKS.map((w, i) => {
+        {items.map((w, i) => {
           const on = hydrated && !!weekDone[w.id];
           return (
             <li key={w.id}>
@@ -55,6 +60,14 @@ export function PracticePlan() {
       </ol>
     </div>
   );
+}
+
+export function PracticePlan() {
+  return <CheckPlan items={WEEKS} />;
+}
+
+export function MpcYears() {
+  return <CheckPlan items={MPC_YEARS} />;
 }
 
 export function SongList() {

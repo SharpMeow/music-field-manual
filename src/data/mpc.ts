@@ -1,6 +1,7 @@
 import type { Section } from "./types";
+import { MPC_CRAFT } from "./mpc-craft";
 
-export const MPC_SECTIONS: Section[] = [
+const MPC_CORE: Section[] = [
   {
     slug: "setup",
     part: "mpc",
@@ -795,3 +796,5 @@ export const MPC_SECTIONS: Section[] = [
     ],
   },
 ];
+
+export const MPC_SECTIONS: Section[] = [...MPC_CORE, ...MPC_CRAFT];

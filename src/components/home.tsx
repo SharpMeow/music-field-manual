@@ -9,6 +9,7 @@ import { WEEKS } from "@/data/chords";
 import { GUITAR_SECTIONS } from "@/data/guitar";
 import { SOURCE_PDF } from "@/data/manual";
 import { MPC_SECTIONS } from "@/data/mpc";
+import { MPC_YEARS } from "@/data/mpc-years";
 import type { Part } from "@/data/types";
 import { checkId, useField, useHasHydrated } from "@/lib/store";
 import { cn, padBankNumber } from "@/lib/utils";
@@ -51,6 +52,7 @@ export function Home() {
   const hydrated = useHasHydrated();
   const setup = usePct(Array.from({ length: 7 }, (_, i) => checkId("setup", i)));
   const loop = usePct(Array.from({ length: 12 }, (_, i) => checkId("loop", i)));
+  const xlYears = usePct(MPC_YEARS.map((w) => w.id));
   const weeks = usePct(WEEKS.map((w) => w.id));
   const resume = hydrated ? last : null;
 
@@ -111,9 +113,10 @@ export function Home() {
         <CoverPads />
       </div>
 
-      <div className="mt-10 grid gap-3 sm:grid-cols-3">
+      <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Stat label="Day one" value={setup} part="mpc" slug="setup" />
         <Stat label="First loop" value={loop} part="mpc" slug="loop" />
+        <Stat label="Three years" value={xlYears} part="mpc" slug="years" />
         <Stat label="Twelve weeks" value={weeks} part="guitar" slug="weeks" />
       </div>
 
@@ -142,7 +145,7 @@ export function Home() {
         <PartCard
           kicker="Part 1"
           title="MPC XL"
-          body="Day-one setup, the fused track model, a 12-step loop, then the real machine: mixer, step row, Q-Links, oscillators, MIDI/CV, plugins, live, three recipes, traps."
+          body="Tonight: setup and a loop. Then years: mixer, drums, 808s, a kit, a library, mixing, form, genres, a 36-month plan, traps."
           href={{ part: "mpc", slug: "setup" }}
           icon={<AudioLines className="size-4" strokeWidth={1.75} />}
           plate={

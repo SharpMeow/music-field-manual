@@ -23,7 +23,8 @@ export type WidgetName =
   | "swing"
   | "strum"
   | "songs"
-  | "news";
+  | "news"
+  | "years";
 
 export type Block =
   | { type: "p"; text: string }

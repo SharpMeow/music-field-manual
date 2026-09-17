@@ -20,7 +20,7 @@ If you are editing this with a coding agent, start with [`docs/AGENTS.md`](docs/
 
 ## What you actually get
 
-- **MPC XL:** day-one setup, a 12-step lo-fi loop, every button and what Shift does, a hardware map with the actual I/O, mixer and Channel Command, Track Edit, 3.9 oscillators, Sample Edit past Chop, the 16-step row, Q-Links / Touch FX / XY, swing, the dirt chain, sidechain, plugins, MIDI/CV, resampling, arrangement, live performance, three recipes after the first loop, firmware 3.9.1, traps
+- **MPC XL:** day-one setup, a 12-step loop, every button, hardware and I/O, mixer, Track Edit, 3.9 oscillators, Sample Edit, the 16-step row, Q-Links / Touch FX, dirt, sidechain, plugins, MIDI/CV, live, three recipes — then a **36-month plan**, drum language, 808s, harmony, kits, library, mixing, form, boom-bap / 4/4 / R&B / cues, automation, CPU hygiene, hybrid DAW, finishing, listening, sessions, firmware 3.9.1, traps
 - **Jackson SL2 DX:** what you own, Floyd survival, the 5-way, eight chords you can hear, a one-minute change drill, metronome, A minor pentatonic box 1, twelve weeks, songs by what they teach
 - **Dispatch:** curated firmware and guitar notes, dated, with sources. Filter by machine. The guitar has no firmware. That is written down on purpose.
 - **Print edition:** the original 27-page PDF, readable in the app (and downloadable)
@@ -70,7 +70,7 @@ The difference is not "we have a website." The difference is that a chord diagra
 
 Most music companions on GitHub are either a static Markdown dump or a half-finished DAW. This one is neither, and that is the useful part for an agent.
 
-**The curriculum is data.** Chapters are typed `Section` objects with `Block`s (`p`, `h`, `lead`, `steps`, `table`, `callout`, `kvs`, `widget`, `checklist`). Adding "a new trap about 3.9.1" is an edit to `src/data/mpc.ts` or `src/data/news.ts`, not a new React page. Search is generated from the same arrays in `src/data/catalog.ts`, so a chapter you add should show up under `⌘K` without a second pass.
+**The curriculum is data.** Chapters are typed `Section` objects with `Block`s (`p`, `h`, `lead`, `steps`, `table`, `callout`, `kvs`, `widget`, `checklist`). Adding "a new trap about 3.9.1" is an edit to `src/data/mpc.ts`, `src/data/mpc-craft.ts`, or `src/data/news.ts`, not a new React page. Search is generated from the same arrays in `src/data/catalog.ts`, so a chapter you add should show up under `⌘K` without a second pass.
 
 **The interactivity is named, not implied.** Widgets (`hardware`, `chords`, `drill`, `metronome`, `dirt`, `swing`, `pickup`, `scale`, `buttons`, `weeks`, `songs`, `notes`, `news`) are mounted from `{ type: "widget", name }` in the book. If a section needs a control, attach a widget. Do not replace a working map with "see the diagram above."
 
@@ -107,7 +107,7 @@ npm run build
 ## Layout
 
 ```
-src/data/          chapters, buttons, chords, dispatch
+src/data/          chapters (mpc.ts, mpc-craft.ts, mpc-years.ts, guitar.ts), buttons, chords, dispatch
 src/components/    widgets and the studio shell
 src/routes/        /   /news   /manual   /mpc/:slug   /guitar/:slug
 src/lib/           local store, Web Audio, theme

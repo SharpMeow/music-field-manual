@@ -3,6 +3,7 @@ import { CHORDS, SONGS, WEEKS } from "./chords";
 import { GUITAR_SECTIONS } from "./guitar";
 import { SOURCE_PDF } from "./manual";
 import { MPC_SECTIONS } from "./mpc";
+import { MPC_YEARS } from "./mpc-years";
 import { NEWS } from "./news";
 import type { Part, Section } from "./types";
 
@@ -74,6 +75,12 @@ export const SEARCH_INDEX: SearchHit[] = [
     blurb: `${w.label} · ${w.body}`,
     href: "/guitar/weeks",
     group: "Practice",
+  })),
+  ...MPC_YEARS.map((w) => ({
+    title: w.title,
+    blurb: `${w.label} · ${w.body}`,
+    href: "/mpc/years",
+    group: "XL years",
   })),
   ...SONGS.map((song) => ({
     title: song.name,
