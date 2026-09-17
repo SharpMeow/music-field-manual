@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as ManualRouteImport } from './routes/manual'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as PartSlugRouteImport } from './routes/$part.$slug'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
   path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManualRoute = ManualRouteImport.update({
+  id: '/manual',
+  path: '/manual',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsRoute = NewsRouteImport.update({
@@ -38,12 +44,14 @@ const PartSlugRoute = PartSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/manual': typeof ManualRoute
   '/news': typeof NewsRoute
   '/$part/$slug': typeof PartSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/manual': typeof ManualRoute
   '/news': typeof NewsRoute
   '/$part/$slug': typeof PartSlugRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/manual': typeof ManualRoute
   '/news': typeof NewsRoute
   '/$part/$slug': typeof PartSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$' | '/news' | '/$part/$slug'
+  fullPaths: '/' | '/$' | '/manual' | '/news' | '/$part/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '/news' | '/$part/$slug'
-  id: '__root__' | '/' | '/$' | '/news' | '/$part/$slug'
+  to: '/' | '/$' | '/manual' | '/news' | '/$part/$slug'
+  id: '__root__' | '/' | '/$' | '/manual' | '/news' | '/$part/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  ManualRoute: typeof ManualRoute
   NewsRoute: typeof NewsRoute
   PartSlugRoute: typeof PartSlugRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/$'
       fullPath: '/$'
       preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manual': {
+      id: '/manual'
+      path: '/manual'
+      fullPath: '/manual'
+      preLoaderRoute: typeof ManualRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  ManualRoute: ManualRoute,
   NewsRoute: NewsRoute,
   PartSlugRoute: PartSlugRoute,
 }

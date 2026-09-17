@@ -12,6 +12,7 @@
   --color-border: #2a2622;
   --color-ok: #8a9a74;
   --color-paper: #d8d0c4;
+  --color-page: #f4efe6;
   --color-scrim: rgb(8 7 6 / 0.62);
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Barlow Condensed", "IBM Plex Sans", sans-serif;
@@ -48,6 +49,7 @@
     --color-border: #ddd4c3;
     --color-ok: #4e5c3c;
     --color-paper: #2e2923;
+    --color-page: #fffaf2;
     --color-scrim: rgb(28 23 18 / 0.38);
     --shadow-panel: 0 1px 2px rgb(28 23 18 / 0.04), 0 12px 28px -16px rgb(28 23 18 / 0.18);
   }
@@ -416,6 +418,31 @@
   .plate-img {
     outline: 1px solid color-mix(in oklab, var(--color-fg) 10%, transparent);
     outline-offset: -1px;
+  }
+
+  .pdf-sheet {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--color-page);
+    box-shadow: var(--shadow-panel);
+    outline: 1px solid color-mix(in oklab, var(--color-fg) 10%, transparent);
+    outline-offset: -1px;
+  }
+
+  .pdf-page {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--color-page);
+  }
+
+  .pdf-skeleton {
+    min-height: 28rem;
+    background: linear-gradient(
+      180deg,
+      var(--color-page) 0%,
+      color-mix(in oklab, var(--color-page) 70%, var(--color-elevated)) 100%
+    );
   }
 }
 

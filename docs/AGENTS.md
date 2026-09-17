@@ -1,6 +1,6 @@
 # Coding agents: Music Field Manual
 
-This repo is an interactive field companion for two specific instruments: the Akai MPC XL (firmware 3.9.1) and the Jackson Soloist SL2 DX. It is not a DAW, not a generic "learn guitar" site, and not a PDF viewer.
+This repo is an interactive field companion for two specific instruments: the Akai MPC XL (firmware 3.9.1) and the Jackson Soloist SL2 DX. It is not a DAW and not a generic "learn guitar" site. The original 27-page PDF is also readable at `/manual`; do not replace the interactive book with that file.
 
 The human-facing promise is: finish a loop the night the box opens, then use the same book for the parts that take weeks. Do not ship a change that makes that first night worse.
 
@@ -8,7 +8,7 @@ The human-facing promise is: finish a loop the night the box opens, then use the
 
 - Curriculum is TypeScript, not Markdown in a CMS. `src/data/types.ts` defines `Section`, `Block`, and `WidgetName`.
 - Chapters: `src/data/mpc.ts`, `src/data/guitar.ts`. Reference tables: `buttons.ts`, `chords.ts`. Dispatch: `news.ts`. Search concatenates those in `catalog.ts`.
-- Routes follow the book: `/`, `/news`, `/mpc/$slug`, `/guitar/$slug`. Unknown slugs must 404, not render an empty studio.
+- Routes follow the book: `/`, `/news`, `/manual`, `/mpc/$slug`, `/guitar/$slug`. Unknown slugs must 404, not render an empty studio.
 - Interactive pieces are widgets in `src/components/`, mounted by name from a `{ type: "widget", name }` block. Keep audio user-initiated (`src/lib/audio.ts`).
 - Progress is `localStorage` via Zustand (`src/lib/store.ts`, persist key `xl-field-manual`). No login, no database, no sync.
 
@@ -33,6 +33,7 @@ An agent that treats this as "paste the official manual into a page" will throw 
 | Make a new control | widget in `src/components/`, name in `WidgetName`, mount from a block |
 | Theme | `src/lib/theme.ts`, `src/styles.css` |
 | Persistence | `src/lib/store.ts` |
+| The original PDF | `public/manuals/mpc-xl-field-manual.pdf`, reader in `src/components/pdf-reader.tsx` |
 
 After an add, confirm the section appears in search (catalog is derived) and that `npm run typecheck` still passes.
 

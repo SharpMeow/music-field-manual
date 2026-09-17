@@ -105,6 +105,14 @@ function CoverNav({
         Dispatch
       </Link>
       <Link
+        to="/manual"
+        onClick={onPick}
+        aria-current={pathname === "/manual" ? "page" : undefined}
+        className={coverLinkClass(pathname === "/manual")}
+      >
+        Print edition
+      </Link>
+      <Link
         to="/$part/$slug"
         params={{ part: "mpc", slug: "setup" }}
         onClick={onPick}
@@ -250,6 +258,9 @@ export function AppShell({ children }: { children: ReactNode }) {
               </Link>
               <Link to="/news" className={headerLinkClass(pathname === "/news")}>
                 News
+              </Link>
+              <Link to="/manual" className={headerLinkClass(pathname === "/manual")}>
+                PDF
               </Link>
             </nav>
             <div className="ml-auto flex items-center gap-2">

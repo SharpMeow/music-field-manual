@@ -21,6 +21,7 @@ type FieldState = {
   pickup: 1 | 2 | 3 | 4 | 5;
   bpm: number;
   dirtOn: Record<string, boolean>;
+  pdfPage: number;
   toggleCheck: (id: string) => void;
   setLast: (last: Last) => void;
   addDrill: (entry: Omit<DrillEntry, "at">) => void;
@@ -29,6 +30,7 @@ type FieldState = {
   setPickup: (n: 1 | 2 | 3 | 4 | 5) => void;
   setBpm: (n: number) => void;
   toggleDirt: (id: string) => void;
+  setPdfPage: (n: number) => void;
 };
 
 export const useField = create<FieldState>()(
@@ -42,6 +44,7 @@ export const useField = create<FieldState>()(
       pickup: 5,
       bpm: 70,
       dirtOn: { vinyl: true, filter: true, out: true },
+      pdfPage: 1,
       toggleCheck: (id) =>
         set((s) => ({ checks: { ...s.checks, [id]: !s.checks[id] } })),
       setLast: (last) => set({ last }),
@@ -57,6 +60,7 @@ export const useField = create<FieldState>()(
       setBpm: (bpm) => set({ bpm }),
       toggleDirt: (id) =>
         set((s) => ({ dirtOn: { ...s.dirtOn, [id]: !s.dirtOn[id] } })),
+      setPdfPage: (pdfPage) => set((s) => (s.pdfPage === pdfPage ? s : { pdfPage })),
     }),
     { name: "xl-field-manual" },
   ),

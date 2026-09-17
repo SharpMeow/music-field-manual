@@ -19,6 +19,7 @@ If you are editing this with a coding agent, start with [`docs/AGENTS.md`](docs/
 - **MPC XL:** day-one setup, a 12-step lo-fi loop, every button and what Shift does, a hardware map, Track Edit, swing, the dirt chain, sidechain, resampling, arrangement, firmware 3.9.1, traps
 - **Jackson SL2 DX:** what you own, Floyd survival, the 5-way, eight chords you can hear, a one-minute change drill, metronome, A minor pentatonic box 1, twelve weeks, songs by what they teach
 - **Dispatch:** curated firmware and guitar notes, dated, with sources. Filter by machine. The guitar has no firmware. That is written down on purpose.
+- **Print edition:** the original 27-page PDF, readable in the app (and downloadable)
 - **Studio chrome:** dark by default, light if you want it, search with `⌘K` or `/`
 
 This is a field companion, not a DAW and not a course platform. Ableton will still be there in the morning.
@@ -104,8 +105,9 @@ npm run build
 ```
 src/data/          chapters, buttons, chords, dispatch
 src/components/    widgets and the studio shell
-src/routes/        /   /news   /mpc/:slug   /guitar/:slug
+src/routes/        /   /news   /manual   /mpc/:slug   /guitar/:slug
 src/lib/           local store, Web Audio, theme
+public/manuals/    original 27-page PDF
 docs/AGENTS.md     how to edit this without flattening it
 ```
 

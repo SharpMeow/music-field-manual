@@ -58,6 +58,10 @@ export function SearchPalette({
       void navigate({ to: "/news" });
       return;
     }
+    if (h.href === "/manual") {
+      void navigate({ to: "/manual" });
+      return;
+    }
     const [part, slug] = h.href.slice(1).split("/") as [Part, string];
     void navigate({ to: "/$part/$slug", params: { part, slug } });
   }

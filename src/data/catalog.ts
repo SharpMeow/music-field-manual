@@ -1,6 +1,7 @@
 import { BUTTONS } from "./buttons";
 import { CHORDS, SONGS, WEEKS } from "./chords";
 import { GUITAR_SECTIONS } from "./guitar";
+import { SOURCE_PDF } from "./manual";
 import { MPC_SECTIONS } from "./mpc";
 import { NEWS } from "./news";
 import type { Part, Section } from "./types";
@@ -42,6 +43,12 @@ export const SEARCH_INDEX: SearchHit[] = [
     title: "Latest dispatch",
     blurb: "Firmware 3.9.1 · Jackson news · checked 16 Sep 2026",
     href: "/news",
+    group: "Home",
+  },
+  {
+    title: SOURCE_PDF.title,
+    blurb: SOURCE_PDF.blurb,
+    href: SOURCE_PDF.href,
     group: "Home",
   },
   ...ALL_SECTIONS.map((s) => ({

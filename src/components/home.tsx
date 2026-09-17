@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, AudioLines, Guitar } from "lucide-react";
+import { ArrowRight, AudioLines, BookOpen, Guitar } from "lucide-react";
 import type { ReactNode } from "react";
 import { PadMark } from "@/components/pad-mark";
 import { HomeNews } from "@/components/news-feed";
@@ -7,6 +7,7 @@ import { Plate } from "@/components/plate";
 import { Progress } from "@/components/ui/progress";
 import { WEEKS } from "@/data/chords";
 import { GUITAR_SECTIONS } from "@/data/guitar";
+import { SOURCE_PDF } from "@/data/manual";
 import { MPC_SECTIONS } from "@/data/mpc";
 import type { Part } from "@/data/types";
 import { checkId, useField, useHasHydrated } from "@/lib/store";
@@ -117,6 +118,25 @@ export function Home() {
       </div>
 
       <HomeNews />
+
+      <Link
+        to="/manual"
+        className="mt-10 flex items-center gap-4 rounded-xl border border-border bg-surface p-4 shadow-panel transition-colors duration-150 hover:border-muted sm:p-5"
+      >
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-elevated text-accent">
+          <BookOpen className="size-5" strokeWidth={1.75} />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block font-mono text-xs uppercase tracking-widest text-subtle">
+            {SOURCE_PDF.subtitle}
+          </span>
+          <span className="mt-1 block font-display text-2xl font-semibold tracking-tight text-fg">
+            Read the original PDF
+          </span>
+          <span className="mt-1 block text-sm leading-relaxed text-muted">{SOURCE_PDF.blurb}</span>
+        </span>
+        <ArrowRight className="hidden size-4 shrink-0 text-muted sm:block" />
+      </Link>
 
       <div className="mt-12 grid gap-4 md:grid-cols-2">
         <PartCard
