@@ -10,7 +10,7 @@ const MPC_CORE: Section[] = [
     part: "mpc",
     title: "Day one, before you touch a pad",
     kicker: "30 minutes",
-    blurb: "The XL ships needing a firmware update and about 30 GB of content sits behind registration. Do this once.",
+    blurb: "The XL ships needing a firmware update, and about 30 GB of content sits behind registration. We'll do this once, in order, and then you never have to think about it again. Put the kettle on.",
     blocks: [
       {
         type: "steps",
@@ -115,7 +115,7 @@ const MPC_CORE: Section[] = [
     part: "mpc",
     title: "Your first lo-fi loop",
     kicker: "One sitting",
-    blurb: "Find four bars of something, chop it, play the chops in a new order, put drums under it, dirty the whole thing. Standalone, no computer.",
+    blurb: "Find four bars of something, chop it, play the chops in a new order, put drums under it, dirty the whole thing. Standalone, no computer. Ugly is fine. Tonight is the loop, not the album.",
     blocks: [
       {
         type: "steps",

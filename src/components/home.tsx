@@ -78,9 +78,11 @@ export function Home() {
             the box tonight.
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">
-            Then learn the machine properly. Written against Akai's own MPC 3.7 and 3.9 manuals,
-            because MPC 3 rebuilt the data model and most tutorials older than 2025 describe a workflow
-            that no longer exists. The guitar tab is the same idea for the Jackson.
+            Then we learn the machines properly, the way a good teacher would: one sitting at a
+            time, no heroics. The XL side is written against Akai's 3.7 and 3.9 manuals, because
+            most videos older than 2025 are talking about a workflow that isn't on this desk. The
+            guitar side is the same idea for this Jackson — twenty honest minutes, calluses, and
+            a Floyd that will behave if you treat it kindly.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -166,7 +168,7 @@ export function Home() {
         <PartCard
           kicker="Part 2"
           title="Jackson Soloist SL2 DX"
-          body="Floyd Rose survival, eight chords, a one-minute change drill that keeps the log, Old Faithful, twelve weeks."
+          body="Floyd first, so it doesn't fight you. Then eight chords, the one-minute change drill, Old Faithful, twenty minutes a day for twelve weeks. I'll take ugly and daily over perfect and Saturday."
           href={{ part: "guitar", slug: "spec" }}
           icon={<Guitar className="size-4" strokeWidth={1.75} />}
           plate={

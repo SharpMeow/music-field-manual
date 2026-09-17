@@ -120,7 +120,7 @@ export function ChangeDrill() {
             <p className="font-mono text-xs uppercase tracking-widest text-muted">Changes</p>
             <p className="font-display text-6xl font-semibold tabular-nums leading-none">{count}</p>
             <p className="mt-2 text-sm text-muted">
-              Target 30. Stretch 60. Do not strum — just land the shape.
+              Target 30. Stretch 60. Don't strum — just put the shape down. The number going up is the lesson.
             </p>
           </div>
           <div className="flex flex-col gap-2">

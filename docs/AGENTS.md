@@ -2,7 +2,7 @@
 
 This repo is an interactive field companion for two specific instruments: the Akai MPC XL (firmware 3.9.1) and the Jackson Soloist SL2 DX. It is not a DAW and not a generic "learn guitar" site. The original 27-page PDF is also readable at `/manual`; do not replace the interactive book with that file.
 
-The human-facing promise is: finish a loop the night the box opens, then use the same book for the parts that take years. Do not ship a change that makes that first night worse.
+The human-facing promise is: finish a loop the night the box opens, then use the same book for the parts that take years. Do not ship a change that makes that first night worse. The guitar side should sound like a teacher sitting next to you: warm, specific, no heroics. Twenty honest minutes. Do not turn the technical XL chapters into pep talk.
 
 ## Why edit this repo instead of starting over
 

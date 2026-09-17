@@ -2,9 +2,9 @@
 
 A sitting-on-the-desk companion for the **Akai MPC XL** (MPC 3.9.1) and the **Jackson Soloist SL2 DX**.
 
-The XL ships with film on the screen and about 30 GB of content locked behind registration. The Jackson is a Corona Superstrat with a floating Floyd Rose: easy to play, easy to fight if you treat it like a hardtail. This app is the night you unbox both, plus the weeks after.
+The XL ships with film on the screen and about 30 GB of content locked behind registration. The Jackson is a Corona Superstrat with a floating Floyd Rose: easy to play, easy to fight if you treat it like a hardtail. This is the night you unbox both, and the teacher in the room for the weeks after — twenty honest minutes, no heroics, a loop tonight, calluses in a month.
 
-Get a loop out of the box tonight. Learn the machines properly after that.
+Get a loop out of the box tonight. Then we sit with the machines.
 
 ![Tonight: MPC pad 1 armed, then the Jackson](docs/tonight.png)
 
@@ -21,7 +21,7 @@ If you are editing this with a coding agent, start with [`docs/AGENTS.md`](docs/
 ## What you actually get
 
 - **MPC XL:** day-one through a 36-month plan, a chapter of YouTube-earned shortcuts (double-tap = Shift, Q-Link macros, strip tap, Partial Preset, flatten's three hiding places), then the technical layer — 960 PPQ swing math, the audio engine, 32-slot matrix / followers / MPCe, warp algorithms, filter topologies, keygroup zones, CV volts, Clip Matrix internals, MIDI clock domains, the DSP graph, Stems Pro, grid vs list events. Firmware 3.9.1, traps.
-- **Jackson SL2 DX:** what you own, Floyd survival, the 5-way, eight chords you can hear, a one-minute change drill, metronome, A minor pentatonic box 1, twelve weeks, songs by what they teach
+- **Jackson SL2 DX:** what you own, Floyd survival without the scare stories, eight chords, a one-minute change drill that keeps the log, Old Faithful, twenty minutes a day for twelve weeks, songs by what they teach. Written like a teacher sitting next to you.
 - **Dispatch:** curated firmware and guitar notes, dated, with sources. Filter by machine. The guitar has no firmware. That is written down on purpose.
 - **Print edition:** the original 27-page PDF, readable in the app (and downloadable)
 - **Studio chrome:** dark by default, light if you want it, search with `⌘K` or `/`
