@@ -2,7 +2,7 @@ export type ChordShape = {
   id: string;
   name: string;
   tab: string;
-  group: "weeks12" | "weeks34" | "weeks58" | "month3" | "power";
+  group: "weeks12" | "weeks34" | "weeks58" | "weeks910" | "month3" | "power";
   tip: string;
   // Low E → high e. null = mute, 0 = open
   frets: Array<number | null>;
@@ -78,7 +78,7 @@ export const CHORDS: ChordShape[] = [
     id: "G",
     name: "G",
     tab: "3-2-0-0-0-3",
-    group: "weeks58",
+    group: "weeks910",
     tip: "Hack while learning: fingers 2 and 3 only, 2 laid flat to mute the A. Full G comes when the hand is ready.",
     frets: [3, 2, 0, 0, 0, 3],
     fingers: [2, 1, 0, 0, 0, 3],

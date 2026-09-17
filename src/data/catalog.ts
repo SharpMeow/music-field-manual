@@ -1,4 +1,4 @@
-import { BUTTONS } from "./buttons";
+import { BUTTONS, STEP_MODES } from "./buttons";
 import { CHORDS, SONGS, WEEKS } from "./chords";
 import { GUITAR_SECTIONS } from "./guitar";
 import { SOURCE_PDF } from "./manual";
@@ -15,6 +15,12 @@ export function sectionsFor(part: Part) {
 
 export function getSection(part: Part, slug: string) {
   return ALL_SECTIONS.find((s) => s.part === part && s.slug === slug);
+}
+
+export function stepCount(part: Part, slug: string, id: string) {
+  const section = getSection(part, slug);
+  const block = section?.blocks.find((b) => b.type === "steps" && b.id === id);
+  return block?.type === "steps" ? block.items.length : 0;
 }
 
 export function neighbors(part: Part, slug: string) {
@@ -63,6 +69,12 @@ export const SEARCH_INDEX: SearchHit[] = [
     blurb: `${b.press} · Shift: ${b.shift}`,
     href: "/mpc/buttons",
     group: "Buttons",
+  })),
+  ...STEP_MODES.map((m) => ({
+    title: `Set + ${m.n} · ${m.name}`,
+    blurb: `Hold Set and press step ${m.n}`,
+    href: "/mpc/buttons",
+    group: "Step modes",
   })),
   ...CHORDS.map((c) => ({
     title: `${c.name} chord`,

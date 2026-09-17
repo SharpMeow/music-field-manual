@@ -16,6 +16,7 @@ export function NotesPad({ part }: { part: Part }) {
         onChange={(e) => setNotes(part, e.target.value)}
         rows={8}
         placeholder="Serial, pad maps, take notes, what you tried…"
+        aria-label={part === "mpc" ? "Notes for the MPC XL" : "Notes for the Jackson"}
         className="mt-3 w-full resize-y rounded-lg border border-border bg-elevated p-3 text-sm leading-relaxed text-fg placeholder:text-subtle"
       />
     </div>

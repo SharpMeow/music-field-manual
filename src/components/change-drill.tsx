@@ -18,6 +18,7 @@ export function ChangeDrill() {
   const hydrated = useHasHydrated();
   const tick = useRef<number | null>(null);
   const countRef = useRef(0);
+  const logged = useRef(false);
   const pair = DRILL_PAIRS[pairI];
   const a = CHORDS.find((c) => c.id === pair[0])!;
   const b = CHORDS.find((c) => c.id === pair[1])!;
@@ -26,24 +27,24 @@ export function ChangeDrill() {
   useEffect(() => {
     if (!running) return;
     tick.current = window.setInterval(() => {
-      setLeft((t) => {
-        if (t <= 1) {
-          if (tick.current) window.clearInterval(tick.current);
-          setRunning(false);
-          if (countRef.current > 0) {
-            addDrill({ pair: `${a.name} ↔ ${b.name}`, count: countRef.current, bpm: 0 });
-          }
-          return 0;
-        }
-        return t - 1;
-      });
+      setLeft((t) => (t <= 1 ? 0 : t - 1));
     }, 1000);
     return () => {
       if (tick.current) window.clearInterval(tick.current);
     };
-  }, [running, a.name, b.name, addDrill]);
+  }, [running]);
+
+  useEffect(() => {
+    if (!running || left > 0 || logged.current) return;
+    logged.current = true;
+    setRunning(false);
+    if (countRef.current > 0) {
+      addDrill({ pair: `${a.name} ↔ ${b.name}`, count: countRef.current, bpm: 0 });
+    }
+  }, [left, running, a.name, b.name, addDrill]);
 
   function start() {
+    logged.current = false;
     countRef.current = 0;
     setCount(0);
     setWhich(0);

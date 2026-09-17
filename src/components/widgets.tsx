@@ -48,5 +48,9 @@ export function Widget({ name, part }: { name: WidgetName; part: Part }) {
       );
     case "years":
       return <MpcYears />;
+    default: {
+      const _never: never = name;
+      return _never;
+    }
   }
 }

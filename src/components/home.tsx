@@ -10,6 +10,7 @@ import { GUITAR_SECTIONS } from "@/data/guitar";
 import { SOURCE_PDF } from "@/data/manual";
 import { MPC_SECTIONS } from "@/data/mpc";
 import { MPC_YEARS } from "@/data/mpc-years";
+import { stepCount } from "@/data/catalog";
 import type { Part } from "@/data/types";
 import { checkId, useField, useHasHydrated } from "@/lib/store";
 import { cn, padBankNumber } from "@/lib/utils";
@@ -50,8 +51,8 @@ function CoverPads() {
 export function Home() {
   const last = useField((s) => s.last);
   const hydrated = useHasHydrated();
-  const setup = usePct(Array.from({ length: 7 }, (_, i) => checkId("setup", i)));
-  const loop = usePct(Array.from({ length: 12 }, (_, i) => checkId("loop", i)));
+  const setup = usePct(Array.from({ length: stepCount("mpc", "setup", "setup") }, (_, i) => checkId("setup", i)));
+  const loop = usePct(Array.from({ length: stepCount("mpc", "loop", "loop") }, (_, i) => checkId("loop", i)));
   const xlYears = usePct(MPC_YEARS.map((w) => w.id));
   const weeks = usePct(WEEKS.map((w) => w.id));
   const resume = hydrated ? last : null;

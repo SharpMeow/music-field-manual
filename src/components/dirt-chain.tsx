@@ -89,7 +89,7 @@ export function DirtChain() {
                 className={cn(
                   "h-11 rounded-full border px-3 font-mono text-xs",
                   sel === f.id
-                    ? "border-accent bg-accent/10 text-fg"
+                    ? "border-accent bg-accent text-accent-fg"
                     : "border-accent/40 bg-accent/10 text-fg",
                 )}
               >

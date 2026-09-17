@@ -209,9 +209,10 @@ export function AppShell({ children }: { children: ReactNode }) {
       }
     };
     panel.addEventListener("keydown", onKey);
+    const menuBtn = menuBtnRef.current;
     return () => {
       panel.removeEventListener("keydown", onKey);
-      menuBtnRef.current?.focus();
+      menuBtn?.focus();
     };
   }, [drawer.open, drawer.render]);
 

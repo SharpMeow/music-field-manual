@@ -86,7 +86,7 @@ export function SearchPalette({
           value={q}
           onValueChange={setQ}
           autoFocus
-          placeholder="Search buttons, chords, firmware, news…"
+          placeholder="Search buttons, step modes, chords, firmware…"
           className="h-12 w-full border-b border-border bg-transparent px-4 text-sm text-fg outline-none placeholder:text-subtle"
         />
         <Command.List className="max-h-80 overflow-y-auto p-2">

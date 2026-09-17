@@ -5,6 +5,19 @@ import { cn } from "@/lib/utils";
 
 const STR_LABELS = ["E", "A", "D", "G", "B", "e"];
 
+function barreOf(chord: ChordShape) {
+  const ones = chord.frets
+    .map((fret, i) => (chord.fingers[i] === 1 && fret && fret > 0 ? { i, fret } : null))
+    .filter((n): n is { i: number; fret: number } => n !== null);
+  if (ones.length < 2) return null;
+  const fret = ones[0].fret;
+  if (ones.some((o) => o.fret !== fret)) return null;
+  const from = ones[0].i;
+  const to = ones[ones.length - 1].i;
+  if (to - from < 3) return null;
+  return { fret, from, to };
+}
+
 function playChord(c: ChordShape) {
   const notes = c.frets
     .map((fret, i) => (fret === null ? null : { string: 6 - i, fret }))
@@ -22,6 +35,7 @@ export function ChordCard({
   onSelect?: () => void;
 }) {
   const [ring, setRing] = useState(0);
+  const barre = barreOf(chord);
   const nut = chord.frets.every((f) => f === null || f === 0 || (f ?? 0) <= 3);
   const start = nut
     ? 1
@@ -128,8 +142,41 @@ export function ChordCard({
             />
           );
         })}
+        {barre
+          ? (() => {
+              const rel = nut ? barre.fret : barre.fret - start + 1;
+              if (rel < 1 || rel > fretsShown) return null;
+              const x1 = left + (boardW * barre.from) / 5;
+              const x2 = left + (boardW * barre.to) / 5;
+              const y = top + (boardH * (rel - 0.5)) / fretsShown;
+              return (
+                <g>
+                  <rect
+                    x={x1 - 9}
+                    y={y - 9}
+                    width={x2 - x1 + 18}
+                    height={18}
+                    rx={9}
+                    className="fill-accent"
+                  />
+                  <text
+                    x={(x1 + x2) / 2}
+                    y={y + 3.5}
+                    textAnchor="middle"
+                    className="fill-accent-fg"
+                    fontSize="10"
+                    fontWeight="600"
+                    fontFamily="IBM Plex Sans, sans-serif"
+                  >
+                    1
+                  </text>
+                </g>
+              );
+            })()
+          : null}
         {chord.frets.map((f, i) => {
           if (f === null || f === 0) return null;
+          if (barre && chord.fingers[i] === 1) return null;
           const rel = nut ? f : f - start + 1;
           if (rel < 1 || rel > fretsShown) return null;
           const x = left + (boardW * i) / 5;
@@ -173,6 +220,7 @@ const GROUPS: Array<{ id: ChordShape["group"] | "all"; label: string }> = [
   { id: "weeks12", label: "Weeks 1–2" },
   { id: "weeks34", label: "Weeks 3–4" },
   { id: "weeks58", label: "Weeks 5–8" },
+  { id: "weeks910", label: "Weeks 9–10" },
   { id: "month3", label: "Month 3" },
   { id: "power", label: "Power" },
 ];
