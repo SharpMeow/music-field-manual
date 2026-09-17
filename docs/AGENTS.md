@@ -1,42 +1,42 @@
-# Music Field Manual, for coding agents
+# Coding agents: Music Field Manual
 
-Music Field Manual is a **field book with a runtime**, not a DAW, not a PDF viewer, and not a social app.
+This repo is an interactive field companion for two specific instruments: the Akai MPC XL (firmware 3.9.1) and the Jackson Soloist SL2 DX. It is not a DAW, not a generic "learn guitar" site, and not a PDF viewer.
 
-It is an unofficial companion for two specific machines: the **Akai MPC XL** (MPC 3.9.1) and the **Jackson Soloist SL2 DX**. Get a loop tonight. Then learn properly.
+The human-facing promise is: finish a loop the night the box opens, then use the same book for the parts that take weeks. Do not ship a change that makes that first night worse.
 
-No accounts. Progress, notes, pickup, BPM, dirt-chain toggles, and the change-drill log live in `localStorage` (Zustand persist, key `xl-field-manual`). Do not add a login or a database.
+## Why edit this repo instead of starting over
 
-## Include this repo in a project when
+- Curriculum is TypeScript, not Markdown in a CMS. `src/data/types.ts` defines `Section`, `Block`, and `WidgetName`.
+- Chapters: `src/data/mpc.ts`, `src/data/guitar.ts`. Reference tables: `buttons.ts`, `chords.ts`. Dispatch: `news.ts`. Search concatenates those in `catalog.ts`.
+- Routes follow the book: `/`, `/news`, `/mpc/$slug`, `/guitar/$slug`. Unknown slugs must 404, not render an empty studio.
+- Interactive pieces are widgets in `src/components/`, mounted by name from a `{ type: "widget", name }` block. Keep audio user-initiated (`src/lib/audio.ts`).
+- Progress is `localStorage` via Zustand (`src/lib/store.ts`, persist key `xl-field-manual`). No login, no database, no sync.
 
-- The human owns these two machines and needs a companion that ticks, plays, and remembers.
-- The book will change more often than the hardware (firmware notes, a clearer Floyd step, a new trap).
-- An AI or a human will edit `src/data/` many times without rebuilding the idea of the app.
+An agent that treats this as "paste the official manual into a page" will throw away the only parts that are hard: the widgets, the pair of machines, and the checklists that persist.
 
-## Do not include it when
+## Scope you should not expand
 
-- You need a DAW, a tab site, a live scrape, a Store listing, stealth, or accounts.
-- You want to cover "any MPC" and "any guitar." Specific is the point.
-- You are not allowed to describe the hardware, or you need official support.
+- Other samplers, other guitars, or "works with any MPC"
+- Accounts, Postgres, or a comments thread
+- A crawler pointed at Akai or Jackson. Dispatch is curated. Date and source, or it does not go in `news.ts`
+- Guitar firmware. There is none. Say so; do not invent a updater
+- Affiliation with Akai, inMusic, Jackson, or Fender
 
-## How to work
+## Edit map
 
-- The book lives in `src/data/mpc.ts`, `src/data/guitar.ts`, `src/data/buttons.ts`, `src/data/chords.ts`, `src/data/news.ts`. Typed `Section` / `Block` / `WidgetName` in `src/data/types.ts`.
-- Routes: `/`, `/news`, `/mpc/$slug`, `/guitar/$slug`. A missing slug is a not-found, not a blank studio.
-- Widgets live in `src/components/` and are mounted by name from a section block `{ type: "widget", name }`. Do not replace a working widget with a screenshot.
-- Search index is built in `src/data/catalog.ts`. If you add a chapter, it should be findable.
-- Theme is dark by default. `src/lib/theme.ts`. Do not remove the toggle.
-- Audio is Web Audio in `src/lib/audio.ts`. Keep it user-initiated (tap a chord, start the drill).
-- American English. No em dashes. Warm comments.
-- MIT. Do not relicense. Do not add analytics. Do not claim affiliation with Akai, inMusic, Jackson, or Fender.
+| You want to… | Touch |
+|---|---|
+| Add or rewrite a chapter | `src/data/mpc.ts` or `src/data/guitar.ts` |
+| New firmware / guitar note | `src/data/news.ts` |
+| Chord, week, or song | `src/data/chords.ts` |
+| Button legend | `src/data/buttons.ts` |
+| Make a new control | widget in `src/components/`, name in `WidgetName`, mount from a block |
+| Theme | `src/lib/theme.ts`, `src/styles.css` |
+| Persistence | `src/lib/store.ts` |
 
-## Do not
+After an add, confirm the section appears in search (catalog is derived) and that `npm run typecheck` still passes.
 
-- Mix a second app into this bundle.
-- Scrape Akai or Jackson on a timer and call it dispatch. Curate `src/data/news.ts` with a date and a source.
-- Invent firmware for the guitar. It has none.
-- Hide the title, the machines, or the fact this is a manual.
-
-## Quick commands
+## Commands
 
 ```
 npm install
