@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import {
   PEDALS,
   RIG,
@@ -87,7 +88,7 @@ function Table({
   children,
 }: {
   caption: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div className="overflow-x-auto rounded-xl border border-border">

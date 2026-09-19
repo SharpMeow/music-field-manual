@@ -115,11 +115,15 @@ function Detail({ pedal }: { pedal: Pedal }) {
 
 export function PedalBoard() {
   const stored = useField((s) => s.pedalOn);
-  const togglePedal = useField((s) => s.togglePedal);
+  const setPedalChain = useField((s) => s.setPedalChain);
   const hydrated = useHasHydrated();
   const [sel, setSel] = useState(PEDALS[0]?.id ?? "");
 
-  const on = hydrated && Object.keys(stored).length > 0 ? stored : DEFAULT_ON;
+  // Merge rather than swap. A stored record only holds the pedals that have
+  // actually been touched, so anything absent has to fall back to its default
+  // instead of reading as off, and a new pedal added to the data later picks
+  // up its default for people who already have state saved.
+  const on = hydrated ? { ...DEFAULT_ON, ...stored } : DEFAULT_ON;
   const chain = chainOf(on);
   const draw = drawOf(chain);
   const known = chain.filter((p) => p.mA !== null);
@@ -229,7 +233,7 @@ export function PedalBoard() {
                 role="switch"
                 aria-checked={lit}
                 aria-label={`${lit ? "Remove" : "Add"} ${p.brand} ${p.name}`}
-                onClick={() => togglePedal(p.id)}
+                onClick={() => setPedalChain({ ...on, [p.id]: !on[p.id] })}
                 className={cn(
                   "relative h-8 w-14 shrink-0 rounded-full border transition-colors duration-150",
                   lit ? "border-accent bg-accent" : "border-border bg-elevated",

@@ -31,7 +31,6 @@ type FieldState = {
   setPickup: (n: 1 | 2 | 3 | 4 | 5) => void;
   setBpm: (n: number) => void;
   toggleDirt: (id: string) => void;
-  togglePedal: (id: string) => void;
   setPedalChain: (on: Record<string, boolean>) => void;
   setPdfPage: (n: number) => void;
 };
@@ -64,8 +63,6 @@ export const useField = create<FieldState>()(
       setBpm: (bpm) => set({ bpm }),
       toggleDirt: (id) =>
         set((s) => ({ dirtOn: { ...s.dirtOn, [id]: !s.dirtOn[id] } })),
-      togglePedal: (id) =>
-        set((s) => ({ pedalOn: { ...s.pedalOn, [id]: !s.pedalOn[id] } })),
       setPedalChain: (pedalOn) => set({ pedalOn }),
       setPdfPage: (pdfPage) => set((s) => (s.pdfPage === pdfPage ? s : { pdfPage })),
     }),

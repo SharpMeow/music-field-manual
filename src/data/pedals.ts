@@ -218,6 +218,7 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "nostalgia",
+    value: { typical: 155, low: 135, high: 185, newStreet: 225, depth: "almost none", note: "Holding value, but only because it is still in current production - not because of scarcity premium." },
     paidUsd: 219,
     brand: "Lichtlaerm Audio",
     name: "Nostalgia",
@@ -450,7 +451,50 @@ export const PEDALS: Pedal[] = [
   },
 ];
 
-export const RIG: RigItem[] = [];
+export const RIG: RigItem[] = [
+  {
+    id: "jackson",
+    name: "Jackson American Series Soloist SL2 DX",
+    kind: "Guitar, satin black",
+    bought: "18 Jul 2025, Guitar Center",
+    paidUsd: 2569.99,
+  },
+  {
+    id: "mpcxl",
+    name: "Akai MPC XL",
+    kind: "Standalone sampler",
+    bought: "22 Jan 2026, Amazon",
+    paidUsd: 2899,
+  },
+  {
+    id: "katana",
+    name: "Boss Katana Artist Gen 3",
+    kind: "100 W 1x12 combo",
+    bought: "24 Sep 2025, Sweetwater",
+    paidUsd: 649.99,
+  },
+  {
+    id: "lewitt",
+    name: "Lewitt LCT-940",
+    kind: "Tube and FET condenser microphone",
+    bought: "27 Oct 2025, Reverb",
+    paidUsd: null,
+  },
+  {
+    id: "sparkneo",
+    name: "Positive Grid Spark NEO",
+    kind: "Wireless headphone amp",
+    bought: "18 Jul 2025, Guitar Center",
+    paidUsd: 199,
+  },
+  {
+    id: "xpnd",
+    name: "D'Addario XPND Pedal Power",
+    kind: "Rechargeable board supply",
+    bought: "2 Aug 2025, Amazon",
+    paidUsd: 169.99,
+  },
+];
 
 export function totalPaid(items: { paidUsd: number | null }[]) {
   return items.reduce((sum, i) => sum + (i.paidUsd ?? 0), 0);
