@@ -13,4 +13,4 @@ npm run build
 
 Both should pass.
 
-MIT. See `LICENSE`. Trademarks stay with their owners.
+PolyForm Small Business 1.0.0. See `LICENSE`. Trademarks stay with their owners.
