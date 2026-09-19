@@ -154,6 +154,126 @@ export const GUITAR_SECTIONS: Section[] = [
     ],
   },
   {
+    slug: "board",
+    part: "guitar",
+    title: "What's on the board",
+    kicker: "Seven pedals",
+    blurb: "Six of these arrived within three weeks of the guitar, and most of them before the amp did. That is not a criticism, it is a diagnosis: this is a board bought by somebody who knew what they wanted to sound like before their hands could do it yet. The hands catch up. Meanwhile, two of these will genuinely make you practise more, and the other five can wait without going stale.",
+    blocks: [
+      {
+        type: "lead",
+        text: "Guitar → compressor → pitch → dirt → modulation → glitch → multi-FX → looper → amp or XL. Tap a pedal to read it.",
+      },
+      { type: "widget", name: "board" },
+      { type: "h", text: "The two to use this month" },
+      {
+        type: "p",
+        text: "The Cali76, because the JB at the bridge is much hotter than the '59 at the neck, and a compressor makes that stop being a volume problem. It also flatters an uneven right hand, which in week six is most right hands, including yours and including mine. Leave it on and forget it exists.",
+      },
+      {
+        type: "p",
+        text: "The Xero, because a looper is a practice tool wearing a performance pedal's clothes. Record four bars of D to A at half speed, play over it at normal speed, and you will hear exactly what your timing is doing in a way the metronome cannot show you. That is the change drill with a backing track. The other five pedals are for when the changes are automatic.",
+      },
+      { type: "h", text: "The buy log" },
+      {
+        type: "table",
+        columns: ["Pedal", "What it is", "Bought", "Paid"],
+        rows: [
+          ["Origin Effects Cali76 Stacked", "Two-stage FET compressor", "28 Jul 2025, Amazon", "$419"],
+          ["Chase Bliss Lost + Found", "Stereo multi-effect, twelve algorithms", "1 Aug 2025, chasebliss.com", "$399"],
+          ["Lichtlaerm Medusa", "HM-2 style distortion with a gate and a loop", "11 Aug 2025, Cult FX", "$219"],
+          ["Lichtlaerm Nostalgia", "Lo-fi modulator", "11 Aug 2025, Cult FX", "$219"],
+          ["DigiTech HammerOn", "Momentary pitch shifter, used", "15 Aug 2025, Reverb", "$233.99"],
+          ["Walrus Audio Xero Polylooper", "Dual-channel stereo looper, used", "18 Aug 2025, Reverb", "$230"],
+          ["OBNE Purr-ting", "Stereo glitch delay and reverb", "25 Jan 2026, B's Music Shop", "$329"],
+        ],
+      },
+      {
+        type: "p",
+        text: "A little over $2,000 before tax and shipping, and the Purr-ting was bought four days after Old Blood Noise announced the Parting, which tells you something about how this board gets assembled.",
+      },
+      {
+        type: "callout",
+        kind: "warn",
+        title: "Where these numbers came from",
+        text: "Control names, jacks and current figures here are taken from the builders' own published specs and manuals. Two are soft and are flagged as such on the pedal itself: Lichtlaerm have never published a current draw for the Medusa, so it is counted as unknown rather than guessed at, and the Lost + Found has two figures in circulation, 200 and 270 mA, so the budget uses the larger one. Manual links go to the builder. This book does not host anybody else's manual.",
+      },
+    ],
+  },
+  {
+    slug: "chain",
+    part: "guitar",
+    title: "Order, power, and where stereo starts",
+    kicker: "Living with seven pedals",
+    blurb: "Three things decide whether a board is a pleasure or a fault-finding exercise: what order the pedals go in, whether the supply can actually carry them, and the exact point in the chain where one cable becomes two. Get those right once and you can stop thinking about them.",
+    blocks: [
+      { type: "h", text: "Why this order" },
+      {
+        type: "kvs",
+        items: [
+          { k: "1. Cali76", v: "Origin's own advice is compressor first, before any drive, and it is right for two reasons. A compressor sets the dynamic range everything downstream will work from, and it does that best on a raw pickup signal. It also hands the pitch shifter behind it exactly what a pitch detector wants: one note at a steady level." },
+          { k: "2. HammerOn", v: "Pitch tracking wants a clean, monophonic, consistent signal, which is what it just got. Put it after the distortion instead and it will hear harmonics rather than a note, and it will tell you about it." },
+          { k: "3. Medusa", v: "Dirt goes after dynamics and pitch, before everything that makes space. Its gate is keyed from its own input, which means it gates what you played, not what the delay behind it is still doing. That is the right way round." },
+          { k: "4. Nostalgia", v: "Modulation after dirt. Chorus and warble on a distorted signal is a texture; distortion on a modulated signal is mud. This is also the last mono pedal in the chain." },
+          { k: "5. Purr-ting", v: "Where stereo begins. It is also the first genuinely time-based pedal, and its Chance knob wants a settled signal to make decisions about." },
+          { k: "6. Lost + Found", v: "Stereo in, stereo out, and Glue at the end of its internal chain acting as a master compressor for everything you have stacked up so far." },
+          { k: "7. Xero", v: "Last, always. A looper captures whatever reaches it, so putting it at the end means you loop the finished sound rather than a dry signal you then have to dress up every time round." },
+        ],
+      },
+      {
+        type: "callout",
+        kind: "tip",
+        title: "The one rule worth memorising",
+        text: "Dynamics, then pitch, then dirt, then modulation, then time, then the looper. Every board you will ever build is a variation on that sentence, and the variations are usually somebody solving a specific problem rather than disagreeing with it.",
+      },
+      { type: "h", text: "Where stereo starts" },
+      {
+        type: "p",
+        text: "Four pedals are mono and three are stereo, and they are not interleaved, which is lucky. Mono runs from the guitar to the Nostalgia. From the Purr-ting onward you are in stereo, and the two amps' worth of signal has to end up somewhere: two amps, or the XL's rear line pair.",
+      },
+      {
+        type: "table",
+        columns: ["Hop", "What the cable is"],
+        rows: [
+          ["Nostalgia out → Purr-ting in", "One ordinary TS patch cable. The Purr-ting takes mono on a TS jack quite happily and splits internally."],
+          ["Purr-ting out → Lost + Found in", "The Purr-ting carries stereo on a single TRS jack; the Lost + Found wants two separate jacks. That is a TRS to dual-TS breakout, not a patch cable."],
+          ["Lost + Found out → Xero in", "Two TS cables, left and right. Both pedals use separate jacks per side."],
+          ["Xero out → destination", "Two TS cables to two amp inputs, or to the XL's rear TRS 3–4 line pair."],
+        ],
+      },
+      {
+        type: "callout",
+        kind: "trap",
+        title: "The Katana's loop is mono",
+        text: "It is a single series TS send and return, so anything stereo you put in it folds down to one side and you lose the pan spread you just paid for. The stereo end of this board wants two amp inputs or the XL, not the amp's loop. The Purr-ting can be set to Mono routing if you genuinely want it in the loop.",
+      },
+      { type: "h", text: "Power, and the number that matters" },
+      {
+        type: "p",
+        text: "The XPND kit is a 10,000 mAh cell feeding a Gateway that converts USB-C to one regulated 9 V rail, and then an eight-plug daisy chain. The total is rated at 1500 mA. The board switched fully on wants about 1438 mA before you count the Medusa, which nobody has published a figure for. That is not comfortable. It is the sort of margin where everything works on the desk and something misbehaves on the night.",
+      },
+      {
+        type: "kvs",
+        items: [
+          { k: "The daisy chain is not isolated", v: "Eight plugs, one ground, one rail. Four of these pedals are digital. Shared grounds plus digital clocks is the standard recipe for hum and whine, and D'Addario sell a separate Noise Isolator precisely because of it. If a noise appears when one specific pedal is switched on, the pedal probably is not faulty." },
+          { k: "Two readings of the spec", v: "D'Addario's support pages also mention 500 mA in connection with this kit. Most likely that is a per-pedal ceiling rather than a total, and every pedal here is under it, the Purr-ting's 350 mA being the largest. The 1500 mA total is the figure the manual is quoted as giving. Worth reading off your own unit before you trust either." },
+          { k: "The Black Lion is upstream, not part of the budget", v: "The PG-P Plus is a mains conditioner: eight filtered, surge-protected AC outlets, a live voltage readout and a ground-OK light. It is where the XPND's wall supply plugs in and it is the reason the wall warts have somewhere sensible to live. It supplies no 9 V DC of its own, so it does not raise the milliamp ceiling." },
+          { k: "The honest fix", v: "Run the two hungriest digital pedals off the mains rather than the battery, and keep the battery for the analogue half. Or accept the board is a two-supply board and stop trying to make one brick carry it." },
+        ],
+      },
+      { type: "h", text: "Noise, and which pedal is lying to you" },
+      {
+        type: "kvs",
+        items: [
+          { k: "The Cali76 is buffered, and it is first", v: "That is a good thing here: a buffer at the front drives a long chain of cable without the top end dying. It also means the board is never fully true-bypassed, which matters only if you own a vintage fuzz. You do not." },
+          { k: "The Medusa's gate is not a noise solution", v: "It is a performance tool. If you are using it to hide hum, find the hum instead: unplug the daisy chain and run that pedal off the wall for thirty seconds, and you will know within a minute." },
+          { k: "Trails and tails", v: "The Lost + Found has a Trails dip switch and the Purr-ting can be buffered-with-trails or true bypass. Decide once. Tails cutting off mid-decay when you stomp is not a fault, it is a setting." },
+          { k: "One change at a time", v: "Seven pedals is 127 combinations before you touch a knob. When something sounds wrong, bypass everything, then add pedals back one at a time. This is dull and it works, and it is faster than the clever approach every single time." },
+        ],
+      },
+    ],
+  },
+  {
     slug: "hold",
     part: "guitar",
     title: "Holding it",

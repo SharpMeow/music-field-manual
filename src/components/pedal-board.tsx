@@ -169,22 +169,38 @@ export function PedalBoard() {
 
       <div className="rounded-xl border border-border bg-surface p-4 shadow-panel">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <p className="font-mono text-xs uppercase tracking-widest text-muted">Power draw</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted">Supply budget</p>
           <p className="font-mono text-xs text-subtle">
-            {draw} mA of {SUPPLY.mA} mA · {chain.length} on
-            {unknown > 0 ? ` · ${unknown} not published` : ""}
+            {draw} mA of {SUPPLY.mA} mA · {pct}% · {chain.length} on
+            {unknown > 0 ? ` · ${unknown} unpublished` : ""}
           </p>
         </div>
         <div className="mt-2 h-2 overflow-hidden rounded-full bg-elevated">
           <div
-            className={cn("h-full rounded-full transition-[width] duration-200", over ? "bg-accent" : "bg-ok")}
+            className={cn(
+              "h-full rounded-full transition-[width] duration-200",
+              over ? "bg-accent" : pct >= 85 ? "bg-accent/70" : "bg-ok",
+            )}
             style={{ width: `${pct}%` }}
           />
         </div>
         <p className="mt-2 text-sm leading-relaxed text-muted">
           {over
-            ? `That is past what ${SUPPLY.name} can give you. Something will whine or drop out — usually the digital one. Split the board across two supplies before you blame a pedal.`
-            : `${SUPPLY.name} covers this with room left. Keep the digital boxes on their own isolated outputs anyway; daisy-chaining them is where the hum comes from.`}
+            ? `Past what ${SUPPLY.name} is rated for. Something will whine or drop out, and it is usually whichever digital box is furthest down the chain. Move a pedal to the wall before you decide it is broken.`
+            : pct >= 85
+              ? `That is ${pct}% of ${SUPPLY.name}, which is closer to the ceiling than you want a battery to run. Fine on a desk; leave yourself room before a gig.`
+              : `${SUPPLY.name} covers this comfortably.`}
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-muted">
+          These are the builders&rsquo; minimum supply ratings, not measured draws, because a
+          minimum rating is what almost every builder publishes and it is the honest number to
+          size a supply against.{" "}
+          {unknown > 0
+            ? `${unknown} of the pedals switched on published nothing at all, so the bar is reading low by however much they want. `
+            : ""}
+          The kit&rsquo;s eight outputs are one daisy chain sharing a ground, not eight isolated
+          rails, and four of these pedals are digital. If you hear hum before you hear a problem,
+          that is where it is coming from.
         </p>
       </div>
 
