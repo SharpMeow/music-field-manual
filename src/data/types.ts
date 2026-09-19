@@ -24,7 +24,8 @@ export type WidgetName =
   | "strum"
   | "songs"
   | "news"
-  | "years";
+  | "years"
+  | "board";
 
 export type Block =
   | { type: "p"; text: string }
