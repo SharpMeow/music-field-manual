@@ -1,5 +1,23 @@
 export type PedalSlot = "Dynamics" | "Pitch" | "Dirt" | "Modulation" | "Time" | "Loop";
 
+/**
+ * What a thing is worth today, as opposed to what it cost. `typical` is the
+ * single number you would put on an insurance schedule. `depth` is how many
+ * current listings it rests on, and it is not decoration: a boutique pedal
+ * with two listings in the country gives a number you should not lean on.
+ */
+export type GearValue = {
+  typical: number | null;
+  low?: number;
+  high?: number;
+  newStreet?: number;
+  depth: "thick" | "thin" | "almost none";
+  note?: string;
+};
+
+/** Every figure in this file was checked on this date and not since. */
+export const VALUES_AS_OF = "19 Sep 2026";
+
 export type Pedal = {
   id: string;
   brand: string;
@@ -31,6 +49,19 @@ export type Pedal = {
   intoXL: string;
   settings: { name: string; body: string }[];
   manual?: { title: string; href: string; note?: string };
+  /** What it cost, as a number, for the arithmetic. */
+  paidUsd: number;
+  value?: GearValue;
+};
+
+/** The rest of the rig: not pedals, but the same question gets asked of them. */
+export type RigItem = {
+  id: string;
+  name: string;
+  kind: string;
+  bought: string;
+  paidUsd: number | null;
+  value?: GearValue;
 };
 
 /**
@@ -50,6 +81,8 @@ export const SUPPLY = {
 export const PEDALS: Pedal[] = [
   {
     id: "cali76",
+    value: { typical: 335, low: 300, high: 385, newStreet: 449, depth: "thin", note: "Holding value well, and unusually the new price has gone UP rather than down." },
+    paidUsd: 419,
     brand: "Origin Effects",
     name: "Cali76 Stacked",
     kind: "Two-stage FET compressor",
@@ -94,6 +127,7 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "hammeron",
+    paidUsd: 233.99,
     brand: "DigiTech",
     name: "HammerOn",
     kind: "Momentary pitch shifter",
@@ -137,6 +171,8 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "medusa",
+    value: { typical: 180, low: 175, high: 260, newStreet: 219, depth: "almost none", note: "Holding value unusually well for a boutique distortion, but NOT trading above retail." },
+    paidUsd: 219,
     brand: "Lichtlaerm Audio",
     name: "Medusa",
     kind: "HM-2 style distortion",
@@ -182,6 +218,7 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "nostalgia",
+    paidUsd: 219,
     brand: "Lichtlaerm Audio",
     name: "Nostalgia",
     kind: "Lo-fi modulator",
@@ -226,6 +263,7 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "purrting",
+    paidUsd: 329,
     brand: "Old Blood Noise Endeavors",
     name: "Purr-ting",
     kind: "Stereo glitch delay and reverb",
@@ -271,6 +309,8 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "lostfound",
+    value: { typical: 500, low: 500, high: 565, newStreet: 399, depth: "thin", note: "Trading above retail." },
+    paidUsd: 399,
     brand: "Chase Bliss",
     name: "Lost + Found",
     kind: "Stereo multi-effect",
@@ -316,6 +356,8 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "nucleo",
+    value: { typical: 375, low: 340, high: 425, newStreet: 449, depth: "thin", note: "Holding value very well - effectively no depreciation in 14 months." },
+    paidUsd: 449,
     brand: "Cornerstone",
     name: "Nucleo",
     kind: "Stereo ambient reverb",
@@ -363,6 +405,7 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "xero",
+    paidUsd: 230,
     brand: "Walrus Audio",
     name: "Xero Polylooper",
     kind: "Dual-channel stereo looper",
@@ -406,6 +449,21 @@ export const PEDALS: Pedal[] = [
     },
   },
 ];
+
+export const RIG: RigItem[] = [];
+
+export function totalPaid(items: { paidUsd: number | null }[]) {
+  return items.reduce((sum, i) => sum + (i.paidUsd ?? 0), 0);
+}
+
+export function totalValue(items: { value?: GearValue }[]) {
+  return items.reduce((sum, i) => sum + (i.value?.typical ?? 0), 0);
+}
+
+/** How many items in a list have no usable valuation, so the totals can say so. */
+export function unvalued(items: { value?: GearValue }[]) {
+  return items.filter((i) => i.value?.typical == null).length;
+}
 
 export function chainOf(on: Record<string, boolean>) {
   return PEDALS.filter((p) => on[p.id]).sort((a, b) => a.order - b.order);

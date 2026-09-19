@@ -193,6 +193,12 @@ export const GUITAR_SECTIONS: Section[] = [
         type: "p",
         text: "About $2,500 before tax and shipping. The Purr-ting was bought four days after Old Blood Noise announced the Parting, and the Nucleo went in the day after the Cali76, which together tell you something about how this board gets assembled.",
       },
+      { type: "h", text: "What it is worth now" },
+      {
+        type: "p",
+        text: "Worth knowing for two reasons. One is that a renters or valuables policy pays out on what a thing is worth today, not what the receipt says, and an unscheduled board is usually under-covered. The other is less comfortable: a board is easier to buy than to play, and knowing the resale number makes selling a pedal you never reach for feel like a decision rather than a defeat.",
+      },
+      { type: "widget", name: "worth" },
       {
         type: "callout",
         kind: "warn",

@@ -2,6 +2,7 @@ import { ButtonRef } from "@/components/button-ref";
 import { ChangeDrill } from "@/components/change-drill";
 import { ChordLibrary } from "@/components/chord-diagram";
 import { DirtChain } from "@/components/dirt-chain";
+import { GearWorth } from "@/components/gear-worth";
 import { HardwareMap } from "@/components/hardware-map";
 import { Metronome, StrumPattern } from "@/components/metronome";
 import { NotesPad } from "@/components/notes-pad";
@@ -51,6 +52,8 @@ export function Widget({ name, part }: { name: WidgetName; part: Part }) {
       return <MpcYears />;
     case "board":
       return <PedalBoard />;
+    case "worth":
+      return <GearWorth />;
     default: {
       const _never: never = name;
       return _never;

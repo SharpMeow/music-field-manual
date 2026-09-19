@@ -25,7 +25,8 @@ export type WidgetName =
   | "songs"
   | "news"
   | "years"
-  | "board";
+  | "board"
+  | "worth";
 
 export type Block =
   | { type: "p"; text: string }
