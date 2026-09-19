@@ -474,6 +474,102 @@ const MPC_CORE: Section[] = [
     ],
   },
   {
+    slug: "board",
+    part: "mpc",
+    title: "The board into the XL",
+    kicker: "Guitar pedals, sampler inputs",
+    blurb: "You now own two machines that both do effects, and the useful question is not which one is better. It is when. A pedal happens before the converter, so you play into it and react to what it gives you. An XL insert happens after, so you decide about it later, calmly, with the take already safe. That distinction is the whole chapter.",
+    blocks: [
+      {
+        type: "callout",
+        kind: "tip",
+        title: "The rule, if you only read one line",
+        text: "Anything you want to perform goes on the floor. Anything you want to reconsider goes in the machine. Nostalgia's wobble changes how you play the chord, so it belongs on the floor. Vinyl Emulation does not, so it belongs on the track.",
+      },
+      { type: "h", text: "Which input, and why it is probably not Inst 1" },
+      {
+        type: "p",
+        text: "Inst 1 expects a guitar: a few hundred millivolts from a passive pickup. A board ending in a compressor, a distortion with Level up, or a looper at unity is handing the XL something far closer to line level. Gain 1 will run out of travel at the bottom and you will be left choosing between clipping and a track you cannot mix.",
+      },
+      {
+        type: "table",
+        columns: ["Input", "Use it for", "Set"],
+        rows: [
+          ["Front Inst 1", "The Jackson on its own, or the board with everything bypassed", "Rear/Front switch under Gain 1 to Front. Stereo/Mono to Mono."],
+          ["Rear XLR/TRS 1–2", "One hot mono pedal output, when you want the combo jack's headroom", "Rear/Front switch to Rear. Line, not mic. Leave +48 V off; nothing here needs it and the board will not thank you."],
+          ["Rear TRS 3–4", "The stereo end of the board. This is the one you will use most", "Phono/Line switch to Line, not Phono. 3/4 Rec Gain sets the level for the pair."],
+        ],
+      },
+      {
+        type: "callout",
+        kind: "trap",
+        title: "Phono/Line is a different switch from Rear/Front",
+        text: "There are two switches that both cause silence and they are not the same one. Rear/Front sits under Gain 1 and 2 and decides between the combo jacks and the front instrument jacks. Phono/Line belongs to inputs 3–4 only. Plug a line-level board into 3–4 with that switch on Phono and you get a distorted, bass-heavy mess, because you are running a line signal through a RIAA phono stage.",
+      },
+      { type: "h", text: "Recording the stereo end of the board" },
+      {
+        type: "steps",
+        id: "board-in",
+        items: [
+          {
+            n: "01",
+            title: "Two cables, not one",
+            body: "The Xero's outputs are separate left and right TS jacks. Run both into TRS 3 and 4. One cable gets you half a board and a pan spread you will not hear.",
+            note: "If you are taking the Purr-ting's output straight in instead, that is a single TRS jack carrying stereo, so you need the TRS to dual-TS breakout rather than a patch cable.",
+          },
+          {
+            n: "02",
+            title: "Make the track stereo before you arm it",
+            body: "New Track → Audio, then in the I/O tab set Audio In to the 3/4 pair rather than a single input, and Stereo/Mono to Stereo. A mono audio track fed from a stereo board records the left side and silently discards the rest.",
+          },
+          {
+            n: "03",
+            title: "Gain with the loudest thing switched on",
+            body: "Set [3/4 Rec Gain] with the dirtiest, loudest combination you plan to use actually engaged, not with a clean chord. Peaks out of the red. Then leave it. A compressor first in the chain is what makes this a one-time job rather than a per-take job.",
+          },
+          {
+            n: "04",
+            title: "Monitor before the latency, not through it",
+            body: "Turn [Dir/Main] toward Direct while you play, or set Monitor to In. You are listening to the board in the room, which is the point of having a board. Back to Main for playback.",
+            note: "Monitor on Auto is fine for an armed audio track. If you hear yourself twice, that is Merge, or the amp is still on.",
+          },
+        ],
+      },
+      { type: "h", text: "Let the XL be the clock" },
+      {
+        type: "p",
+        text: "Three of these pedals sync to MIDI clock, and one of them is a looper. That matters more than it sounds: a loop captured on the Xero while it is following the XL's clock is in the same time as your sequence, which means you can resample it into a pad and it will still line up. A loop captured free-running will not, and no amount of warping afterwards will make it feel right.",
+      },
+      {
+        type: "kvs",
+        items: [
+          { k: "The XL has four MIDI outs", v: "Discrete outs, not thru. Clock, MTC and notes are enabled per port in Preferences → MIDI/Sync, so turn clock on for the port you are using and leave the others alone." },
+          { k: "The cable is the catch", v: "The XL's outs are 5-pin DIN. The Purr-ting and the Xero both take MIDI on 1/8\" TRS Type A. You need a 5-pin DIN to 3.5 mm TRS Type A lead, and Type A rather than Type B matters: the wrong one is not a cable fault, it is a wiring standard, and it will look like a dead pedal." },
+          { k: "Chain them", v: "XL out → Purr-ting MIDI in. The Purr-ting has a MIDI out that passes clock, so Purr-ting out → Xero MIDI in. The Xero has a thru if you ever add a fourth." },
+          { k: "Lost + Found needs an adaptor", v: "Its MIDI arrives on a 1/4\" TRS jack that also serves expression and CV, and getting 5-pin DIN into it wants Chase Bliss's MIDIBox, which was not in the box. Until then, tap tempo by foot. Its effects are tempo-synced by default either way." },
+          { k: "One brain", v: "Same rule as the laptop chapter. If the XL is the clock, every pedal follows it. If you let a pedal free-run you have two clocks, and two clocks is how loops drift apart over eight bars while you blame the pedal." },
+        ],
+      },
+      { type: "h", text: "Turning a pedal pass into a pad" },
+      {
+        type: "kvs",
+        items: [
+          { k: "The straightforward way", v: "Record an audio track through the board, then [Shift] + [Sample Edit] and chop it like any other sample. Everything in Sample editing and slicing applies; the board is just a more interesting source than a record." },
+          { k: "The Looper way", v: "Set the Looper's Input to the 3/4 line pair, Sync to the transport, two or four bars, and play the board into it. [Export to Track], or [Shift] + [Export to Pad] to land it straight on a pad with the Keep window open." },
+          { k: "The one worth stealing", v: "Play four bars of chords through Nostalgia with Fidelity up, capture it in the Looper, export to a pad, then chop it. You have a degraded loop that was degraded while you were playing it, which is a different musical object from a clean loop you aged afterwards." },
+          { k: "Do not double the dirt", v: "If the pedal already did it, leave the XL's version off. Vinyl Emulation on top of Nostalgia is two layers of age, and two layers read as a preset. The lo-fi dirt chain chapter is for material that did not come through the board." },
+          { k: "Stems Pro on a board take", v: "Worth one experiment: run a stereo board take through Stems and see what it does with a guitar that is already drenched. Sometimes it separates the dry from the wash usefully. Sometimes it is nonsense. Either is a five-minute answer." },
+        ],
+      },
+      {
+        type: "callout",
+        kind: "warn",
+        title: "The amp is still an option",
+        text: "The Katana's Line Out is cab-simulated and balanced, so board into amp into the XL's line inputs gives you the speaker and the room without a microphone. Power Control at 0.5 W keeps the power amp working and the neighbours out of it. A DI'd high-gain pedal sounds like a fizzing DI; the same pedal through a cab sim sounds like a record.",
+      },
+    ],
+  },
+  {
     slug: "song",
     part: "mpc",
     title: "From a loop to an actual song",

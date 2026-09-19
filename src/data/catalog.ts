@@ -5,6 +5,7 @@ import { SOURCE_PDF } from "./manual";
 import { MPC_SECTIONS } from "./mpc";
 import { MPC_YEARS } from "./mpc-years";
 import { NEWS } from "./news";
+import { PEDALS } from "./pedals";
 import type { Part, Section } from "./types";
 
 export const ALL_SECTIONS: Section[] = [...MPC_SECTIONS, ...GUITAR_SECTIONS];
@@ -99,6 +100,12 @@ export const SEARCH_INDEX: SearchHit[] = [
     blurb: `${song.artist} · ${song.teach}`,
     href: "/guitar/songs",
     group: "Songs",
+  })),
+  ...PEDALS.map((p) => ({
+    title: `${p.brand} ${p.name}`,
+    blurb: `${p.kind} · ${p.slot} · bought ${p.bought}`,
+    href: "/guitar/board",
+    group: "Pedals",
   })),
   ...NEWS.map((n) => ({
     title: n.title,

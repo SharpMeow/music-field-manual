@@ -2,9 +2,11 @@ import { ButtonRef } from "@/components/button-ref";
 import { ChangeDrill } from "@/components/change-drill";
 import { ChordLibrary } from "@/components/chord-diagram";
 import { DirtChain } from "@/components/dirt-chain";
+import { GearWorth } from "@/components/gear-worth";
 import { HardwareMap } from "@/components/hardware-map";
 import { Metronome, StrumPattern } from "@/components/metronome";
 import { NotesPad } from "@/components/notes-pad";
+import { PedalBoard } from "@/components/pedal-board";
 import { Pentatonic } from "@/components/pentatonic";
 import { PickupSwitch } from "@/components/pickup-switch";
 import { PracticePlan, SongList, MpcYears } from "@/components/practice-plan";
@@ -48,6 +50,10 @@ export function Widget({ name, part }: { name: WidgetName; part: Part }) {
       );
     case "years":
       return <MpcYears />;
+    case "board":
+      return <PedalBoard />;
+    case "worth":
+      return <GearWorth />;
     default: {
       const _never: never = name;
       return _never;
