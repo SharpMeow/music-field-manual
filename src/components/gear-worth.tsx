@@ -50,6 +50,11 @@ function Row({
       <td className="px-3 py-2.5">
         <span className="font-medium text-fg">{name}</span>
         <span className="mt-0.5 block font-mono text-xs text-subtle">{sub}</span>
+        {value?.note ? (
+          <span className="mt-1 block max-w-prose text-xs leading-relaxed text-muted">
+            {value.note}
+          </span>
+        ) : null}
       </td>
       <td className="px-3 py-2.5 text-right font-mono text-sm text-muted">
         {paidUsd != null ? usd(paidUsd) : "—"}
@@ -114,11 +119,17 @@ function Table({
 export function GearWorth() {
   const all = [...PEDALS, ...RIG];
   const priced = all.filter((i) => i.value?.typical != null);
-  const paid = totalPaid(all);
+  const receipted = all.filter((i) => i.paidUsd != null);
+  // The change can only be honest across items that have BOTH numbers. One
+  // piece of gear has a current value but no recorded purchase price, and
+  // letting it into one side of the subtraction and not the other would
+  // quietly flatter the result by its whole value.
+  const comparable = all.filter((i) => i.paidUsd != null && i.value?.typical != null);
+  const paid = totalPaid(receipted);
   const worth = totalValue(priced);
   const missing = unvalued(all);
-  // Compare like with like: the change is over the priced items only.
-  const delta = worth - totalPaid(priced);
+  const noReceipt = all.length - receipted.length;
+  const delta = totalValue(comparable) - totalPaid(comparable);
 
   return (
     <div className="flex flex-col gap-4">
@@ -165,13 +176,13 @@ export function GearWorth() {
         <div className="mt-3 grid gap-4 sm:grid-cols-3">
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-subtle">
-              Paid, all {all.length}
+              Paid, {receipted.length} of {all.length}
             </p>
             <p className="mt-1 font-display text-3xl font-semibold tracking-tight">{usd(paid)}</p>
           </div>
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-subtle">
-              Worth now, the {priced.length} priced
+              Worth now, {priced.length} of {all.length}
             </p>
             <p className="mt-1 font-display text-3xl font-semibold tracking-tight">
               {priced.length > 0 ? usd(worth) : "not yet priced"}
@@ -179,23 +190,26 @@ export function GearWorth() {
           </div>
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-subtle">
-              Change on those {priced.length}
+              Change, {comparable.length} with both
             </p>
             <p
               className={cn(
                 "mt-1 font-display text-3xl font-semibold tracking-tight",
-                priced.length === 0 ? "text-subtle" : delta >= 0 ? "text-ok" : "text-fg",
+                comparable.length === 0 ? "text-subtle" : delta >= 0 ? "text-ok" : "text-fg",
               )}
             >
-              {priced.length > 0 ? `${delta >= 0 ? "+" : "−"}${usd(Math.abs(delta))}` : "—"}
+              {comparable.length > 0 ? `${delta >= 0 ? "+" : "−"}${usd(Math.abs(delta))}` : "—"}
             </p>
           </div>
         </div>
         <p className="mt-4 text-sm leading-relaxed text-muted">
-          The two right-hand figures cover only the items that have a usable market figure, so
-          they are never comparing a full shelf against a partial one.
+          The change column only counts gear with both a purchase price and a current value,
+          so nothing lands on one side of the subtraction without landing on the other.
+          {noReceipt > 0
+            ? ` ${noReceipt} ${noReceipt === 1 ? "item has" : "items have"} a value but no recorded price paid.`
+            : ""}
           {missing > 0
-            ? ` ${missing} ${missing === 1 ? "item is" : "items are"} left out: too few listings to say anything honest.`
+            ? ` ${missing} ${missing === 1 ? "item is" : "items are"} left unpriced: too few listings to say anything honest.`
             : ""}{" "}
           These are used-market numbers, which is what a policy pays out on and what a buyer
           would actually hand over. They are not replacement cost: several of these still sell

@@ -127,6 +127,7 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "hammeron",
+    value: { typical: 175, low: 150, high: 260, newStreet: 249, depth: "thin", note: "Depreciating, and the new price is the reason." },
     paidUsd: 233.99,
     brand: "DigiTech",
     name: "HammerOn",
@@ -264,6 +265,7 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "purrting",
+    value: { typical: 250, low: 230, high: 290, newStreet: 329, depth: "thin", note: "Derived from the $329 new street price, still current. The B's Music colourway is cosmetic and shows no clear premium." },
     paidUsd: 329,
     brand: "Old Blood Noise Endeavors",
     name: "Purr-ting",
@@ -406,6 +408,7 @@ export const PEDALS: Pedal[] = [
   },
   {
     id: "xero",
+    value: { typical: 180, low: 150, high: 210, newStreet: 255, depth: "thin", note: "Derived from the new street price, which has FALLEN to about $255 from $299, dragging used along with it. No used listings seen." },
     paidUsd: 230,
     brand: "Walrus Audio",
     name: "Xero Polylooper",
@@ -454,6 +457,7 @@ export const PEDALS: Pedal[] = [
 export const RIG: RigItem[] = [
   {
     id: "jackson",
+    value: { typical: 1650, low: 1450, high: 1850, newStreet: 2270, depth: "thin", note: "New street has drifted down to about $2,270 from $2,629. A USA Jackson usually resells near two thirds of street." },
     name: "Jackson American Series Soloist SL2 DX",
     kind: "Guitar, satin black",
     bought: "18 Jul 2025, Guitar Center",
@@ -461,13 +465,15 @@ export const RIG: RigItem[] = [
   },
   {
     id: "mpcxl",
+    value: { typical: 2300, low: 2100, high: 2500, newStreet: 2899, depth: "almost none", note: "Launched January 2026 at $2,899, so there is barely a used market yet. Held near 80% as flagships do in year one." },
     name: "Akai MPC XL",
     kind: "Standalone sampler",
-    bought: "22 Jan 2026, Amazon",
+    bought: "6 Feb 2026, Guitar Center Chicago",
     paidUsd: 2899,
   },
   {
     id: "katana",
+    value: { typical: 460, low: 400, high: 520, newStreet: 700, depth: "thin", note: "Derived from street, which has RISEN to $699.99 since you bought it. Modelling combos shed value faster than tube amps." },
     name: "Boss Katana Artist Gen 3",
     kind: "100 W 1x12 combo",
     bought: "24 Sep 2025, Sweetwater",
@@ -475,6 +481,7 @@ export const RIG: RigItem[] = [
   },
   {
     id: "lewitt",
+    value: { typical: 700, low: 600, high: 850, newStreet: 1140, depth: "thin", note: "Still sold new from about $1,140. Used hybrid tube mics typically clear near 60% of that." },
     name: "Lewitt LCT-940",
     kind: "Tube and FET condenser microphone",
     bought: "27 Oct 2025, Reverb",
@@ -482,6 +489,7 @@ export const RIG: RigItem[] = [
   },
   {
     id: "sparkneo",
+    value: { typical: 120, low: 100, high: 150, newStreet: 199, depth: "thin", note: "Still $199 new, and the wired Core sibling discounting to $99 caps what anyone pays used." },
     name: "Positive Grid Spark NEO",
     kind: "Wireless headphone amp",
     bought: "18 Jul 2025, Guitar Center",
@@ -489,6 +497,7 @@ export const RIG: RigItem[] = [
   },
   {
     id: "xpnd",
+    value: { typical: 110, low: 95, high: 130, newStreet: 170, depth: "thin", note: "Still $169.99 new and widely stocked, so used sits a third under it." },
     name: "D'Addario XPND Pedal Power",
     kind: "Rechargeable board supply",
     bought: "2 Aug 2025, Amazon",
