@@ -132,9 +132,9 @@ export function PedalBoard() {
   return (
     <div className="flex flex-col gap-4">
       <p className="text-sm text-muted">
-        Flip a pedal in or out of tonight&rsquo;s chain. Order is fixed to the order that works on
-        this board &mdash; dirt early, pitch before time, the looper last so it captures whatever
-        came before it. Tap a name to read it.
+        Flip a pedal in or out of tonight&rsquo;s chain. The order is fixed to the one that works
+        on this board: dynamics first, pitch before dirt, time after modulation, and the looper
+        last so it captures whatever came before it. Tap a name to read it.
       </p>
 
       <div className="flex min-h-11 flex-wrap items-center gap-2">
@@ -142,7 +142,7 @@ export function PedalBoard() {
         {chain.length === 0 ? (
           <>
             <span className="text-subtle">&rarr;</span>
-            <Chip label="straight in — nothing switched on" tone="muted" />
+            <Chip label="straight in, nothing switched on" tone="muted" />
           </>
         ) : (
           chain.map((p) => (
@@ -199,7 +199,7 @@ export function PedalBoard() {
             ? `${unknown} of the pedals switched on published nothing at all, so the bar is reading low by however much they want. `
             : ""}
           The kit&rsquo;s eight outputs are one daisy chain sharing a ground, not eight isolated
-          rails, and four of these pedals are digital. If you hear hum before you hear a problem,
+          rails, and five of these pedals are digital. If you hear hum before you hear a problem,
           that is where it is coming from.
         </p>
       </div>

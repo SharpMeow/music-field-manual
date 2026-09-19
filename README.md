@@ -2,7 +2,7 @@
 
 A sitting-on-the-desk companion for the **Akai MPC XL** (MPC 3.9.1) and the **Jackson Soloist SL2 DX**.
 
-The XL ships with film on the screen and about 30 GB of content locked behind registration. The Jackson is a Corona Superstrat with a floating Floyd Rose: easy to play, easy to fight if you treat it like a hardtail. This is the night you unbox both, and the teacher in the room for the weeks after — twenty honest minutes, no heroics, a loop tonight, calluses in a month.
+The XL ships with film on the screen and about 30 GB of content locked behind registration. The Jackson is a Corona Superstrat with a floating Floyd Rose: easy to play, easy to fight if you treat it like a hardtail. Between them sits a board of eight pedals. This is the night you unbox all of it, and the teacher in the room for the weeks after — twenty honest minutes, no heroics, a loop tonight, calluses in a month.
 
 Get a loop out of the box tonight. Then we sit with the machines.
 
@@ -22,6 +22,7 @@ If you are editing this with a coding agent, start with [`docs/AGENTS.md`](docs/
 
 - **MPC XL:** day-one through a 36-month plan, a chapter of YouTube-earned shortcuts (double-tap = Shift, Q-Link macros, strip tap, Partial Preset, flatten's three hiding places), then the technical layer — 960 PPQ swing math, the audio engine, 32-slot matrix / followers / MPCe, warp algorithms, filter topologies, keygroup zones, CV volts, Clip Matrix internals, MIDI clock domains, the DSP graph, Stems Pro, grid vs list events. Firmware 3.9.1, traps.
 - **Jackson SL2 DX:** what you own, Floyd survival without the scare stories, eight chords, a one-minute change drill that keeps the log, Old Faithful, twenty minutes a day for twelve weeks, songs by what they teach. Written like a teacher sitting next to you.
+- **The board:** eight pedals as typed records, not a gear list. Controls, jacks, bypass and published current draw, next to what each one does on *this* guitar and into *this* sampler. An interactive chain with a live supply budget, chain order with the reasoning, the exact cable for every hop, and the point where the board stops being mono. Where a builder published nothing, it says so instead of guessing.
 - **Dispatch:** curated firmware and guitar notes, dated, with sources. Filter by machine. The guitar has no firmware. That is written down on purpose.
 - **Print edition:** the original 27-page PDF, readable in the app (and downloadable)
 - **Studio chrome:** dark by default, light if you want it, search with `⌘K` or `/`
@@ -72,11 +73,11 @@ Most music companions on GitHub are either a static Markdown dump or a half-fini
 
 **The curriculum is data.** Chapters are typed `Section` objects with `Block`s (`p`, `h`, `lead`, `steps`, `table`, `callout`, `kvs`, `widget`, `checklist`). Adding "a new trap about 3.9.1" is an edit to `src/data/mpc.ts`, `src/data/mpc-craft.ts`, or `src/data/news.ts`, not a new React page. Search is generated from the same arrays in `src/data/catalog.ts`, so a chapter you add should show up under `⌘K` without a second pass.
 
-**The interactivity is named, not implied.** Widgets (`hardware`, `chords`, `drill`, `metronome`, `dirt`, `swing`, `pickup`, `scale`, `buttons`, `weeks`, `songs`, `notes`, `news`) are mounted from `{ type: "widget", name }` in the book. If a section needs a control, attach a widget. Do not replace a working map with "see the diagram above."
+**The interactivity is named, not implied.** Widgets (`hardware`, `chords`, `drill`, `metronome`, `dirt`, `swing`, `pickup`, `scale`, `buttons`, `weeks`, `songs`, `notes`, `news`, `board`) are mounted from `{ type: "widget", name }` in the book. If a section needs a control, attach a widget. Do not replace a working map with "see the diagram above."
 
 **State is local on purpose.** Zustand persist, key `xl-field-manual`. Checks, notes, BPM, pickup, dirt toggles, drill log. Visitors do not sign in. Do not add auth, a database, or "sync my progress" unless the human asked for accounts. They did not.
 
-**The pair is the product.** `/mpc/:slug` and `/guitar/:slug` plus `/news`. Keep both machines. Do not open a third brand. Do not invent guitar firmware.
+**The pair is the product.** `/mpc/:slug` and `/guitar/:slug` plus `/news`. Keep both machines. Do not open a third brand. Do not invent guitar firmware. Pedals are guitar gear and live under `/guitar`; they are not a third part.
 
 **News is a file, not a job.** `src/data/news.ts` wants a date and a source. If you cannot cite it, it does not ship.
 
@@ -107,7 +108,7 @@ npm run build
 ## Layout
 
 ```
-src/data/          chapters (mpc.ts, mpc-craft.ts, mpc-tech.ts, mpc-years.ts, guitar.ts), buttons, chords, dispatch
+src/data/          chapters (mpc.ts, mpc-craft.ts, mpc-tech.ts, mpc-years.ts, guitar.ts), buttons, chords, pedals, dispatch
 src/components/    widgets and the studio shell
 src/routes/        /   /news   /manual   /mpc/:slug   /guitar/:slug
 src/lib/           local store, Web Audio, theme

@@ -157,12 +157,12 @@ export const GUITAR_SECTIONS: Section[] = [
     slug: "board",
     part: "guitar",
     title: "What's on the board",
-    kicker: "Seven pedals",
-    blurb: "Six of these arrived within three weeks of the guitar, and most of them before the amp did. That is not a criticism, it is a diagnosis: this is a board bought by somebody who knew what they wanted to sound like before their hands could do it yet. The hands catch up. Meanwhile, two of these will genuinely make you practise more, and the other five can wait without going stale.",
+    kicker: "Eight pedals",
+    blurb: "Seven of these arrived within three weeks of the guitar, and every one of them before the amp did. That is not a criticism, it is a diagnosis: this is a board bought by somebody who knew what they wanted to sound like before their hands could do it yet. The hands catch up. Meanwhile, two of these will genuinely make you practise more, and the rest can wait without going stale.",
     blocks: [
       {
         type: "lead",
-        text: "Guitar → compressor → pitch → dirt → modulation → glitch → multi-FX → looper → amp or XL. Tap a pedal to read it.",
+        text: "Guitar → compressor → pitch → dirt → modulation → glitch → multi-FX → reverb → looper → amp or XL. Tap a pedal to read it.",
       },
       { type: "widget", name: "board" },
       { type: "h", text: "The two to use this month" },
@@ -172,7 +172,7 @@ export const GUITAR_SECTIONS: Section[] = [
       },
       {
         type: "p",
-        text: "The Xero, because a looper is a practice tool wearing a performance pedal's clothes. Record four bars of D to A at half speed, play over it at normal speed, and you will hear exactly what your timing is doing in a way the metronome cannot show you. That is the change drill with a backing track. The other five pedals are for when the changes are automatic.",
+        text: "The Xero, because a looper is a practice tool wearing a performance pedal's clothes. Record four bars of D to A at half speed, play over it at normal speed, and you will hear exactly what your timing is doing in a way the metronome cannot show you. That is the change drill with a backing track. The other six are for when the changes are automatic.",
       },
       { type: "h", text: "The buy log" },
       {
@@ -180,6 +180,7 @@ export const GUITAR_SECTIONS: Section[] = [
         columns: ["Pedal", "What it is", "Bought", "Paid"],
         rows: [
           ["Origin Effects Cali76 Stacked", "Two-stage FET compressor", "28 Jul 2025, Amazon", "$419"],
+          ["Cornerstone Nucleo", "Stereo ambient reverb, Paul Davids signature", "29 Jul 2025, direct", "$449"],
           ["Chase Bliss Lost + Found", "Stereo multi-effect, twelve algorithms", "1 Aug 2025, chasebliss.com", "$399"],
           ["Lichtlaerm Medusa", "HM-2 style distortion with a gate and a loop", "11 Aug 2025, Cult FX", "$219"],
           ["Lichtlaerm Nostalgia", "Lo-fi modulator", "11 Aug 2025, Cult FX", "$219"],
@@ -190,7 +191,7 @@ export const GUITAR_SECTIONS: Section[] = [
       },
       {
         type: "p",
-        text: "A little over $2,000 before tax and shipping, and the Purr-ting was bought four days after Old Blood Noise announced the Parting, which tells you something about how this board gets assembled.",
+        text: "About $2,500 before tax and shipping. The Purr-ting was bought four days after Old Blood Noise announced the Parting, and the Nucleo went in the day after the Cali76, which together tell you something about how this board gets assembled.",
       },
       {
         type: "callout",
@@ -204,7 +205,7 @@ export const GUITAR_SECTIONS: Section[] = [
     slug: "chain",
     part: "guitar",
     title: "Order, power, and where stereo starts",
-    kicker: "Living with seven pedals",
+    kicker: "Living with eight pedals",
     blurb: "Three things decide whether a board is a pleasure or a fault-finding exercise: what order the pedals go in, whether the supply can actually carry them, and the exact point in the chain where one cable becomes two. Get those right once and you can stop thinking about them.",
     blocks: [
       { type: "h", text: "Why this order" },
@@ -217,7 +218,8 @@ export const GUITAR_SECTIONS: Section[] = [
           { k: "4. Nostalgia", v: "Modulation after dirt. Chorus and warble on a distorted signal is a texture; distortion on a modulated signal is mud. This is also the last mono pedal in the chain." },
           { k: "5. Purr-ting", v: "Where stereo begins. It is also the first genuinely time-based pedal, and its Chance knob wants a settled signal to make decisions about." },
           { k: "6. Lost + Found", v: "Stereo in, stereo out, and Glue at the end of its internal chain acting as a master compressor for everything you have stacked up so far." },
-          { k: "7. Xero", v: "Last, always. A looper captures whatever reaches it, so putting it at the end means you loop the finished sound rather than a dry signal you then have to dress up every time round." },
+          { k: "7. Nucleo", v: "Reverb after delay, which is the conventional order for the conventional reason: a delay feeding a reverb sounds like a room with echoes in it, and a reverb feeding a delay sounds like a mistake. Ninety-second decays also want to be near the end, where nothing downstream is going to distort them." },
+          { k: "8. Xero", v: "Last, always. A looper captures whatever reaches it, so putting it at the end means you loop the finished sound rather than a dry signal you then have to dress up every time round." },
         ],
       },
       {
@@ -229,7 +231,7 @@ export const GUITAR_SECTIONS: Section[] = [
       { type: "h", text: "Where stereo starts" },
       {
         type: "p",
-        text: "Four pedals are mono and three are stereo, and they are not interleaved, which is lucky. Mono runs from the guitar to the Nostalgia. From the Purr-ting onward you are in stereo, and the two amps' worth of signal has to end up somewhere: two amps, or the XL's rear line pair.",
+        text: "Four pedals are mono and four are stereo, and they are not interleaved, which is lucky. Mono runs from the guitar to the Nostalgia. From the Purr-ting onward you are in stereo, and the two amps' worth of signal has to end up somewhere: two amps, or the XL's rear line pair. Note that the stereo pedals do not agree about jacks. Some carry stereo on one TRS jack and some use two separate TS jacks, so half the hops below need a breakout rather than a patch cable.",
       },
       {
         type: "table",
@@ -237,7 +239,8 @@ export const GUITAR_SECTIONS: Section[] = [
         rows: [
           ["Nostalgia out → Purr-ting in", "One ordinary TS patch cable. The Purr-ting takes mono on a TS jack quite happily and splits internally."],
           ["Purr-ting out → Lost + Found in", "The Purr-ting carries stereo on a single TRS jack; the Lost + Found wants two separate jacks. That is a TRS to dual-TS breakout, not a patch cable."],
-          ["Lost + Found out → Xero in", "Two TS cables, left and right. Both pedals use separate jacks per side."],
+          ["Lost + Found out → Nucleo in", "Two separate jacks into one TRS jack, so the same breakout cable again, pointing the other way. You own one of these; you need two."],
+          ["Nucleo out → Xero in", "Two TS cables, left and right. Both use separate jacks per side, so this one is easy."],
           ["Xero out → destination", "Two TS cables to two amp inputs, or to the XL's rear TRS 3–4 line pair."],
         ],
       },
@@ -250,7 +253,7 @@ export const GUITAR_SECTIONS: Section[] = [
       { type: "h", text: "Power, and the number that matters" },
       {
         type: "p",
-        text: "The XPND kit is a 10,000 mAh cell feeding a Gateway that converts USB-C to one regulated 9 V rail, and then an eight-plug daisy chain. The total is rated at 1500 mA. The board switched fully on wants about 1438 mA before you count the Medusa, which nobody has published a figure for. That is not comfortable. It is the sort of margin where everything works on the desk and something misbehaves on the night.",
+        text: "The XPND kit is a 10,000 mAh cell feeding a Gateway that converts USB-C to one regulated 9 V rail, and then an eight-plug daisy chain. The total is rated at 1500 mA. Every pedal switched on at once asks for about 1618 mA, and that is before the Medusa, for which nobody has published a figure at all. The whole board does not fit. That is not a disaster, it is a fact to design around: the board you actually play at any one time is smaller than the board you own, and the widget above will tell you when tonight's selection has gone over.",
       },
       {
         type: "kvs",
@@ -258,7 +261,7 @@ export const GUITAR_SECTIONS: Section[] = [
           { k: "The daisy chain is not isolated", v: "Eight plugs, one ground, one rail. Four of these pedals are digital. Shared grounds plus digital clocks is the standard recipe for hum and whine, and D'Addario sell a separate Noise Isolator precisely because of it. If a noise appears when one specific pedal is switched on, the pedal probably is not faulty." },
           { k: "Two readings of the spec", v: "D'Addario's support pages also mention 500 mA in connection with this kit. Most likely that is a per-pedal ceiling rather than a total, and every pedal here is under it, the Purr-ting's 350 mA being the largest. The 1500 mA total is the figure the manual is quoted as giving. Worth reading off your own unit before you trust either." },
           { k: "The Black Lion is upstream, not part of the budget", v: "The PG-P Plus is a mains conditioner: eight filtered, surge-protected AC outlets, a live voltage readout and a ground-OK light. It is where the XPND's wall supply plugs in and it is the reason the wall warts have somewhere sensible to live. It supplies no 9 V DC of its own, so it does not raise the milliamp ceiling." },
-          { k: "The honest fix", v: "Run the two hungriest digital pedals off the mains rather than the battery, and keep the battery for the analogue half. Or accept the board is a two-supply board and stop trying to make one brick carry it." },
+          { k: "The honest fix", v: "Run the two hungriest digital pedals off the mains rather than the battery, and keep the battery for the analogue half. The Purr-ting alone asks for 350 mA and the Xero for 300, so moving those two takes 650 mA off the chain and puts the rest comfortably inside it. Or accept that this is a two-supply board and stop trying to make one brick carry it." },
         ],
       },
       { type: "h", text: "Noise, and which pedal is lying to you" },
@@ -268,7 +271,7 @@ export const GUITAR_SECTIONS: Section[] = [
           { k: "The Cali76 is buffered, and it is first", v: "That is a good thing here: a buffer at the front drives a long chain of cable without the top end dying. It also means the board is never fully true-bypassed, which matters only if you own a vintage fuzz. You do not." },
           { k: "The Medusa's gate is not a noise solution", v: "It is a performance tool. If you are using it to hide hum, find the hum instead: unplug the daisy chain and run that pedal off the wall for thirty seconds, and you will know within a minute." },
           { k: "Trails and tails", v: "The Lost + Found has a Trails dip switch and the Purr-ting can be buffered-with-trails or true bypass. Decide once. Tails cutting off mid-decay when you stomp is not a fault, it is a setting." },
-          { k: "One change at a time", v: "Seven pedals is 127 combinations before you touch a knob. When something sounds wrong, bypass everything, then add pedals back one at a time. This is dull and it works, and it is faster than the clever approach every single time." },
+          { k: "One change at a time", v: "Eight pedals is 255 combinations before you touch a knob. When something sounds wrong, bypass everything, then add pedals back one at a time. This is dull and it works, and it is faster than the clever approach every single time." },
         ],
       },
     ],
