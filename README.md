@@ -12,7 +12,7 @@ Get a loop out of the box tonight. Then we sit with the machines.
 
 No account. Checklists, notes, pickup position, and the change-drill log stay in this browser.
 
-**[github.com/SharpMeow/music-field-manual](https://github.com/SharpMeow/music-field-manual)** · MIT · unofficial, not affiliated with Akai, inMusic, Jackson, or Fender
+**[github.com/SharpMeow/music-field-manual](https://github.com/SharpMeow/music-field-manual)** · PolyForm Small Business 1.0.0 · unofficial, not affiliated with Akai, inMusic, Jackson, or Fender
 
 If you are editing this with a coding agent, start with [`docs/AGENTS.md`](docs/AGENTS.md). The book is typed data. The moving parts are named widgets. That split is the whole reason an agent can touch this without flattening it into a blog.
 
@@ -119,6 +119,6 @@ docs/AGENTS.md     how to edit this without flattening it
 
 ## License
 
-[MIT](LICENSE). Use it, fork it, remix it.
+[PolyForm Small Business License 1.0.0](LICENSE).
 
 Akai, MPC, Jackson, Floyd Rose, and Fender are trademarks of their owners. This is an unofficial companion.
