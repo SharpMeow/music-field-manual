@@ -1,7 +1,7 @@
 {
   "name": "music-field-manual",
   "private": true,
-  "license": "MIT",
+  "license": "PolyForm-Small-Business-1.0.0",
   "sideEffects": false,
   "type": "module",
   "overrides": {
