@@ -100,16 +100,56 @@ export const GUITAR_SECTIONS: Section[] = [
     slug: "plug",
     part: "guitar",
     title: "Plugging in",
-    kicker: "Amp or MPC",
-    blurb: "Clean guitar through the XL's effects is perfectly respectable. High-gain tones through those same effects are not. For chill chords into a beat, this is exactly the right amount of guitar.",
+    kicker: "Amp, board, or MPC",
+    blurb: "Three places the Jackson can end up: the amp in the room, the sampler on the desk, or the board in between. Clean guitar through the XL's effects is perfectly respectable. High-gain tones through those same effects are not, which is what the Katana and the dirt pedals are for.",
     blocks: [
       {
         type: "kvs",
         items: [
-          { k: "Into the MPC XL", v: "Cable into the front Inst 1 jack. Flip the Rear/Front switch under Gain 1 to Front — that switch is the one everyone misses. Stereo/Mono to Mono. New Track → Audio. I/O: Audio In = Input 1, Monitor = Auto. Raise Gain 1 until it peaks without clipping. Dir/Main toward Direct while you play, so you're not listening through the latency and blaming your hands." },
-          { k: "A real amp", v: "Boss Katana-50 Gen 3 if you want a room: clean channel for chords, Brown for when the Jackson asks for it, built-in tuner, headphones for the apartment. About $300. If the apartment is the constraint, a Positive Grid Spark Neo Core headphone amp is about $100 and nobody downstairs needs to know." },
+          { k: "The amp in the room", v: "Boss Katana Artist Gen 3, 100 W into a 12″ Waza speaker. Five amp characters, five effect sections, a 3-band EQ with Contour, Resonance and Presence. Power Control drops it to 50 W or 0.5 W. That last one is the apartment setting, and it is the reason a 100-watt amp is not a mistake in a flat. Clean for chords into the sampler, Brown when the Jackson asks for it." },
+          { k: "Headphones, quietly", v: "The Positive Grid Spark NEO you bought alongside the guitar is the no-amp option: wireless, its own amp models, nobody downstairs needs to know. The Katana will also do it: the Line Out and the phones jack are cab-simulated, so headphones off the amp sound like an amp rather than like a buzzing transistor." },
+          { k: "Bluetooth, since the adaptor is in there", v: "The BT-Dual sitting in the Katana gives you two separate things. Bluetooth audio streams a backing track into the amp from your phone. Bluetooth MIDI lets a phone or a computer drive the amp's own controls. Handy, and entirely separate from the pedals. The board never touches it." },
+          { k: "Into the MPC XL", v: "Guitar alone: cable into the front Inst 1 jack, flip the Rear/Front switch under Gain 1 to Front. That switch is the one everyone misses. Stereo/Mono to Mono. New Track → Audio. I/O: Audio In = Input 1, Monitor = Auto. Raise Gain 1 until it peaks without clipping. Dir/Main toward Direct while you play, so you are not listening through the latency and blaming your hands." },
           { k: "Picks and a tuner", v: "Medium picks, 0.73–0.88 mm, to start. Thicker later for lead, once the wrist is loose. Clip-on tuner (Snark, D'Addario) or the one in the Katana. Fretting-hand nails short. That's not aesthetic. That's so the fingertip, not the nail, puts the string down." },
         ],
+      },
+      { type: "h", text: "Where the board goes" },
+      {
+        type: "p",
+        text: "You have three routes and they are not interchangeable. Pick one per session rather than rewiring mid-song.",
+      },
+      {
+        type: "table",
+        columns: ["Route", "What it gets you", "What it costs"],
+        rows: [
+          [
+            "Board → front of the amp",
+            "The normal one. Dirt and pitch hit the preamp the way they were designed to, and the amp's own character is part of the sound.",
+            "The amp's input is mono, so anything stereo at the end of your board folds down. Turn the Katana's own reverb and delay off or you are stacking two of everything.",
+          ],
+          [
+            "Board → amp's series FX loop",
+            "Time and texture land after the preamp distortion, so delays and reverbs stay clear instead of being chewed up by gain.",
+            "That loop is mono and TS. Two of your pedals are stereo, and both of them collapse in it. Good for the dirt-free half of the board, not for the whole thing.",
+          ],
+          [
+            "Board → XL line inputs",
+            "The sampler hears the finished sound, in stereo, at the level it wants. This is the route for making records rather than making noise.",
+            "No amp in the signal at all, so high-gain tones sound like a fizzing DI unless something in the chain is doing speaker duty.",
+          ],
+        ],
+      },
+      {
+        type: "callout",
+        kind: "trap",
+        title: "A loud board is not an instrument-level signal",
+        text: "Inst 1 expects a guitar. A compressor with the output up, or a distortion with Level past noon, is pushing something closer to line level at it, and Gain 1 runs out of room at the bottom of its travel. If the meters are hot with the gain all the way down, stop turning it and move to the rear TRS 3/4 line pair instead. Full walkthrough in The board into the XL.",
+      },
+      {
+        type: "callout",
+        kind: "tip",
+        title: "The quiet way to record the amp",
+        text: "The Katana's Line Out is cab-simulated and balanced. Into the XL's rear TRS 3–4 at line level, it gives you the amp's voice with the room and the neighbours left out. Power Control at 0.5 W first if you still want the power amp working for you.",
       },
     ],
   },
