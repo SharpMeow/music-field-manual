@@ -14,6 +14,9 @@ export const Route = createFileRoute("/$part/$slug")({
     if (!section) throw notFound();
     return { section };
   },
+  head: ({ loaderData }) => ({
+    meta: loaderData ? [{ title: `${loaderData.section.title} · Music Field Manual` }] : [],
+  }),
   component: SectionPage,
   notFoundComponent: Missing,
 });
