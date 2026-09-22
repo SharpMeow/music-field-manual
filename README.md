@@ -27,6 +27,7 @@ If you are editing this with a coding agent, start with [`docs/AGENTS.md`](docs/
 - [Who should skip it](#who-should-skip-it)
 - [Why a coding agent should use this repo](#why-a-coding-agent-should-use-this-repo)
 - [Run it](#run-it)
+- [Run with Docker](#run-with-docker)
 - [Commands](#commands)
 - [Layout](#layout)
 - [Contributing](#contributing)
@@ -114,6 +115,20 @@ npm run dev
 
 Open the URL Vite prints (default port 8080).
 
+## Run with Docker
+
+No Node on the machine, or you only want to test the book:
+
+```bash
+git clone https://github.com/SharpMeow/music-field-manual.git
+cd music-field-manual
+docker compose up --build
+```
+
+Needs Docker with Compose 2.24 or newer. Open http://localhost:8080. This is the production build served by Node, not the dev server, so edits need another `docker compose up --build`.
+
+There is no database to start and nothing to sign in to. Progress stays in your browser, same as everywhere else. To use another port, copy `.env.example` to `.env` and set `APP_PORT`. `docker compose down` stops it.
+
 ## Commands
 
 | Command | What it does |
@@ -126,7 +141,7 @@ Open the URL Vite prints (default port 8080).
 | `npm run lint` | ESLint |
 | `npm run format` | Prettier |
 
-CI runs typecheck, build and `check:routes` on every pull request. `check:routes` uses Playwright's Chromium; run `npx playwright install chromium` once, or point `CHROMIUM_PATH` at a Chromium you already have.
+CI runs typecheck, build and `check:routes` on every pull request, and builds and starts the Docker image. `check:routes` uses Playwright's Chromium; run `npx playwright install chromium` once, or point `CHROMIUM_PATH` at a Chromium you already have.
 
 ---
 

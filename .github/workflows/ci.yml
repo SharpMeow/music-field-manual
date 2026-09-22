@@ -49,3 +49,31 @@ jobs:
       - name: Dev server log
         if: failure()
         run: cat dev.log
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check compose.yaml
+        run: docker compose config --quiet
+
+      - name: Build the image and start it
+        run: docker compose up --build --detach --wait --wait-timeout 120
+
+      - name: Check a few pages
+        run: |
+          for path in / /news /manual /mpc/setup /guitar/board; do
+            curl -sf -o /dev/null "http://127.0.0.1:8080$path" || { echo "failed: $path"; exit 1; }
+          done
+          code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8080/no-such-page)
+          [ "$code" = "404" ] || { echo "unknown page returned $code, expected 404"; exit 1; }
+
+      - name: Container log
+        if: failure()
+        run: docker compose logs
+
+      - name: Stop
+        if: always()
+        run: docker compose down
