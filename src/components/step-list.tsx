@@ -18,7 +18,7 @@ export function StepList({ id, items }: { id: string; items: Step[] }) {
         <p className="font-mono text-xs uppercase tracking-widest text-muted">
           {done}/{items.length} complete
         </p>
-        <Progress value={pct} className="max-w-40" />
+        <Progress value={pct} aria-label="Steps complete" className="max-w-40" />
       </div>
       <ol className="flex flex-col gap-3">
         {items.map((step, i) => {

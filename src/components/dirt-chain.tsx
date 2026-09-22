@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useField, useHasHydrated } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { useWidgetHeading } from "@/lib/heading-level";
 
 const FX = [
   {
@@ -62,6 +63,7 @@ const FX = [
 ] as const;
 
 export function DirtChain() {
+  const Heading = useWidgetHeading();
   const dirtOn = useField((s) => s.dirtOn);
   const toggleDirt = useField((s) => s.toggleDirt);
   const hydrated = useHasHydrated();
@@ -89,7 +91,7 @@ export function DirtChain() {
                 className={cn(
                   "h-11 rounded-full border px-3 font-mono text-xs",
                   sel === f.id
-                    ? "border-accent bg-accent text-accent-fg"
+                    ? "border-accent bg-accent-fill text-accent-fg"
                     : "border-accent/40 bg-accent/10 text-fg",
                 )}
               >
@@ -117,7 +119,7 @@ export function DirtChain() {
                 onClick={() => setSel(f.id)}
                 className="min-w-0 flex-1 text-left"
               >
-                <p className="font-mono text-xs uppercase tracking-widest text-accent">{f.slot}</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{f.slot}</p>
                 <p className="mt-1 font-display text-xl font-semibold tracking-tight">{f.name}</p>
                 <p className="mt-1 font-mono text-xs text-muted">{f.place}</p>
               </button>
@@ -145,7 +147,7 @@ export function DirtChain() {
       </div>
       <div className="rounded-xl border border-border bg-surface p-5 shadow-panel">
         <p className="font-mono text-xs uppercase tracking-widest text-muted">{current.slot}</p>
-        <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">{current.name}</h3>
+        <Heading className="mt-1 font-display text-2xl font-semibold tracking-tight">{current.name}</Heading>
         <p className="mt-3 text-sm leading-relaxed text-muted">{current.body}</p>
       </div>
     </div>

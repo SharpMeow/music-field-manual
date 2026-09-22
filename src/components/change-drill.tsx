@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { CHORDS, DRILL_PAIRS } from "@/data/chords";
 import { useField, useHasHydrated } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { useWidgetHeading } from "@/lib/heading-level";
 
 const DURATION = 60;
 
 export function ChangeDrill() {
+  const Heading = useWidgetHeading();
   const [pairI, setPairI] = useState(0);
   const [running, setRunning] = useState(false);
   const [left, setLeft] = useState(DURATION);
@@ -72,9 +74,9 @@ export function ChangeDrill() {
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="font-mono text-xs uppercase tracking-widest text-muted">One-minute changes</p>
-          <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">
+          <Heading className="mt-1 font-display text-2xl font-semibold tracking-tight">
             {a.name} ↔ {b.name}
-          </h3>
+          </Heading>
         </div>
         <div className="text-right">
           <p className="font-mono text-4xl tabular-nums leading-none text-fg">{left}s</p>

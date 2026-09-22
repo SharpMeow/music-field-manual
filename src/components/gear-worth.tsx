@@ -23,7 +23,7 @@ function Depth({ depth }: { depth: GearValue["depth"] }) {
           ? "border-ok/40 text-ok"
           : depth === "thin"
             ? "border-border text-muted"
-            : "border-accent/40 text-accent",
+            : "border-accent/40 text-accent-ink",
       )}
     >
       {label}

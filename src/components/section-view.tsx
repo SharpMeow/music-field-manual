@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { AlertTriangle, ArrowLeft, ArrowRight, Ban, Lightbulb } from "lucide-react";
 import { Prose } from "@/components/prose";
 import { StepList } from "@/components/step-list";
+import { HeadingLevelProvider } from "@/lib/heading-level";
 import { Widget } from "@/components/widgets";
 import { neighbors } from "@/data/catalog";
 import type { Block, Section } from "@/data/types";
@@ -80,7 +81,7 @@ function BlockView({ block, part }: { block: Block; part: Section["part"] }) {
           <p
             className={cn(
               "flex items-center gap-2 font-mono text-xs uppercase tracking-widest",
-              kind === "tip" ? "text-ok" : "text-accent",
+              kind === "tip" ? "text-ok" : "text-accent-ink",
             )}
           >
             <Icon className="size-3.5" strokeWidth={2} aria-hidden />
@@ -137,12 +138,12 @@ export function SectionView({ section }: { section: Section }) {
         <Link
           to="/$part/$slug"
           params={{ part: section.part, slug: partHome }}
-          className="hover:text-accent"
+          className="hover:text-accent-ink"
         >
           {partLabel}
         </Link>
         <span className="mx-2 text-subtle">/</span>
-        <span className="text-accent">{section.kicker}</span>
+        <span className="text-accent-ink">{section.kicker}</span>
       </p>
       <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
         {section.title}
@@ -150,10 +151,18 @@ export function SectionView({ section }: { section: Section }) {
       <p className="mt-4 max-w-prose text-base leading-relaxed text-muted">{section.blurb}</p>
       <div className="mt-8 flex flex-col gap-6">
         {section.blocks.map((block, i) => (
-          <BlockView key={i} block={block} part={section.part} />
+          <HeadingLevelProvider
+            key={i}
+            value={section.blocks.slice(0, i).some((b) => b.type === "h") ? 3 : 2}
+          >
+            <BlockView block={block} part={section.part} />
+          </HeadingLevelProvider>
         ))}
       </div>
-      <nav className="mt-12 flex items-stretch justify-between gap-3 border-t border-border pt-6">
+      <nav
+        aria-label="Previous and next chapter"
+        className="mt-12 flex items-stretch justify-between gap-3 border-t border-border pt-6"
+      >
         {prev ? (
           <Link
             to="/$part/$slug"

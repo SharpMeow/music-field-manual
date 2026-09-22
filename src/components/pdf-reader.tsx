@@ -6,9 +6,10 @@ import { SOURCE_PDF } from "@/data/manual";
 import { useField, useHasHydrated } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
-type PdfJs = typeof import("pdfjs-dist");
+type PdfJs = typeof import("pdfjs-dist/legacy/build/pdf.mjs");
 type PdfDoc = import("pdfjs-dist").PDFDocumentProxy;
 type PdfTask = import("pdfjs-dist").PDFDocumentLoadingTask;
+type PdfRender = import("pdfjs-dist").RenderTask;
 
 const ZOOM_STEPS = [0.85, 1, 1.15, 1.35, 1.6];
 
@@ -23,6 +24,7 @@ export function PdfReader() {
   const taskRef = useRef<PdfTask | null>(null);
   const restored = useRef(false);
   const renderGen = useRef(0);
+  const painting = useRef<PdfRender | null>(null);
 
   const [pages, setPages] = useState(0);
   const [page, setPage] = useState(1);
@@ -41,6 +43,9 @@ export function PdfReader() {
     const stack = stackRef.current;
     if (!stack) return;
     const gen = ++renderGen.current;
+    // A newer pass owns the canvases now. pdf.js refuses to draw into a canvas
+    // that is still mid-render, so stop the old pass before this one starts.
+    painting.current?.cancel();
     const cssWidth = stack.clientWidth;
     if (cssWidth < 32) return;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -61,7 +66,14 @@ export function PdfReader() {
       const ctx = canvas.getContext("2d");
       if (!ctx) continue;
       ctx.setTransform(1, 0, 0, 1, 0, 0);
-      await pdfPage.render({ canvasContext: ctx, viewport, canvas }).promise;
+      const task = pdfPage.render({ canvasContext: ctx, viewport, canvas });
+      painting.current = task;
+      try {
+        await task.promise;
+      } catch (err) {
+        if (gen !== renderGen.current) return;
+        throw err;
+      }
     }
   }, []);
 
@@ -69,8 +81,11 @@ export function PdfReader() {
     let cancelled = false;
     (async () => {
       try {
-        const pdfjs: PdfJs = await import("pdfjs-dist");
-        const worker = await import("pdfjs-dist/build/pdf.worker.min.mjs?url");
+        // The legacy build polyfills newer builtins (Map#getOrInsertComputed)
+        // that the modern build assumes. Without it, pages render blank on
+        // browsers that do not ship them yet.
+        const pdfjs: PdfJs = await import("pdfjs-dist/legacy/build/pdf.mjs");
+        const worker = await import("pdfjs-dist/legacy/build/pdf.worker.min.mjs?url");
         pdfjs.GlobalWorkerOptions.workerSrc = worker.default;
         const loadingTask = pdfjs.getDocument({ url: SOURCE_PDF.src });
         taskRef.current = loadingTask;
@@ -90,6 +105,7 @@ export function PdfReader() {
     return () => {
       cancelled = true;
       renderGen.current += 1;
+      painting.current?.cancel();
       docRef.current = null;
       const task = taskRef.current;
       taskRef.current = null;
@@ -189,7 +205,7 @@ export function PdfReader() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <p className="font-mono text-xs uppercase tracking-widest text-accent">{SOURCE_PDF.subtitle}</p>
+      <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{SOURCE_PDF.subtitle}</p>
       <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
         {SOURCE_PDF.title}
       </h1>
@@ -269,7 +285,7 @@ export function PdfReader() {
           <a
             href={SOURCE_PDF.src}
             download="MPC-XL-Field-Manual.pdf"
-            className="mt-5 inline-flex h-12 items-center rounded-md bg-accent px-5 text-sm font-medium text-accent-fg"
+            className="mt-5 inline-flex h-12 items-center rounded-md bg-accent-fill px-5 text-sm font-medium text-accent-fg"
           >
             Download PDF
           </a>
@@ -287,6 +303,7 @@ export function PdfReader() {
                 key={i}
                 data-pdf-page={i + 1}
                 className="pdf-sheet"
+                role="img"
                 aria-label={`Page ${i + 1}`}
               >
                 <canvas

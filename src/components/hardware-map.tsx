@@ -1,5 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import { cn, padBankNumber } from "@/lib/utils";
+import { useWidgetHeading } from "@/lib/heading-level";
 
 const ZONES = [
   {
@@ -47,6 +48,7 @@ const ZONES = [
 ] as const;
 
 export function HardwareMap() {
+  const Heading = useWidgetHeading();
   const [id, setId] = useState<(typeof ZONES)[number]["id"]>("pads");
   const zone = ZONES.find((z) => z.id === id)!;
 
@@ -187,8 +189,8 @@ export function HardwareMap() {
         className="rounded-xl border border-border bg-surface p-5 shadow-panel"
         aria-live="polite"
       >
-        <p className="font-mono text-xs uppercase tracking-widest text-accent">{zone.label}</p>
-        <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">{zone.title}</h3>
+        <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{zone.label}</p>
+        <Heading className="mt-1 font-display text-2xl font-semibold tracking-tight">{zone.title}</Heading>
         <p className="mt-3 text-sm leading-relaxed text-muted">{zone.body}</p>
       </aside>
     </div>

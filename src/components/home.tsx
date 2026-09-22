@@ -89,7 +89,7 @@ export function Home() {
             <Link
               to="/$part/$slug"
               params={{ part: "mpc", slug: "loop" }}
-              className="inline-flex h-12 items-center gap-2 rounded-md bg-accent pl-5 pr-4 text-sm font-medium text-accent-fg transition-transform duration-150 active:scale-[0.96]"
+              className="inline-flex h-12 items-center gap-2 rounded-md bg-accent-fill pl-5 pr-4 text-sm font-medium text-accent-fg transition-transform duration-150 active:scale-[0.96]"
             >
               First lo-fi loop
               <ArrowRight className="size-4" />
@@ -129,7 +129,7 @@ export function Home() {
         to="/manual"
         className="mt-10 flex items-center gap-4 rounded-xl border border-border bg-surface p-4 shadow-panel transition-colors duration-150 hover:border-muted sm:p-5"
       >
-        <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-elevated text-accent">
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-elevated text-accent-ink">
           <BookOpen className="size-5" strokeWidth={1.75} />
         </span>
         <span className="min-w-0 flex-1">
@@ -214,7 +214,7 @@ function Stat({
         {value.n}
         <span className="text-lg text-muted">/{value.t}</span>
       </p>
-      <Progress value={value.pct} className="mt-3" />
+      <Progress value={value.pct} aria-label={`${label} progress`} className="mt-3" />
     </Link>
   );
 }
@@ -242,12 +242,12 @@ function PartCard({
     <section className="overflow-hidden rounded-xl border border-border bg-surface shadow-panel">
       {plate}
       <div className="p-5 sm:p-6">
-        <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-accent">
+        <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-accent-ink">
           {icon}
           {kicker}
         </p>
         <h2 className="mt-1 font-display text-3xl font-semibold tracking-tight">
-          <Link to="/$part/$slug" params={href} className="hover:text-accent">
+          <Link to="/$part/$slug" params={href} className="hover:text-accent-ink">
             {title}
           </Link>
         </h2>
@@ -258,7 +258,7 @@ function PartCard({
               <Link
                 to="/$part/$slug"
                 params={{ part: item.part, slug: item.slug }}
-                className="flex min-h-11 items-center gap-3 border-t border-border py-2.5 text-sm transition-colors duration-150 hover:text-accent"
+                className="flex min-h-11 items-center gap-3 border-t border-border py-2.5 text-sm transition-colors duration-150 hover:text-accent-ink"
               >
                 <span className="w-5 font-mono text-xs text-subtle">
                   {String(i + 1).padStart(2, "0")}

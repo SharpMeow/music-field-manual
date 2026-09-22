@@ -3,6 +3,7 @@ import { useState } from "react";
 import { PEDALS, SUPPLY, chainOf, drawOf, type Pedal } from "@/data/pedals";
 import { useField, useHasHydrated } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { useWidgetHeading } from "@/lib/heading-level";
 
 const DEFAULT_ON: Record<string, boolean> = Object.fromEntries(
   PEDALS.map((p) => [p.id, p.defaultOn]),
@@ -28,12 +29,13 @@ function Chip({
 }
 
 function Detail({ pedal }: { pedal: Pedal }) {
+  const Heading = useWidgetHeading();
   return (
     <div className="rounded-xl border border-border bg-surface p-5 shadow-panel sm:p-6">
-      <p className="font-mono text-xs uppercase tracking-widest text-accent">{pedal.kind}</p>
-      <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">
+      <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{pedal.kind}</p>
+      <Heading className="mt-1 font-display text-2xl font-semibold tracking-tight">
         {pedal.brand} {pedal.name}
-      </h3>
+      </Heading>
       <p className="mt-1 font-mono text-xs text-subtle">
         {pedal.bought} · {pedal.from}
         {pedal.paid ? ` · ${pedal.paid}` : ""}
@@ -95,7 +97,7 @@ function Detail({ pedal }: { pedal: Pedal }) {
           href={pedal.manual.href}
           target="_blank"
           rel="noreferrer noopener"
-          className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md border border-border bg-elevated px-4 text-sm text-fg transition-colors duration-150 hover:text-accent"
+          className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-md border border-border bg-elevated px-4 text-sm text-fg transition-colors duration-150 hover:text-accent-ink"
         >
           <ExternalLink className="size-4" aria-hidden />
           {pedal.manual.title}
@@ -158,7 +160,7 @@ export function PedalBoard() {
                 className={cn(
                   "h-11 rounded-full border px-3 font-mono text-xs",
                   sel === p.id
-                    ? "border-accent bg-accent text-accent-fg"
+                    ? "border-accent bg-accent-fill text-accent-fg"
                     : "border-accent/40 bg-accent/10 text-fg",
                 )}
               >
@@ -222,7 +224,7 @@ export function PedalBoard() {
               )}
             >
               <button type="button" onClick={() => setSel(p.id)} className="min-w-0 flex-1 text-left">
-                <p className="font-mono text-xs uppercase tracking-widest text-accent">{p.slot}</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{p.slot}</p>
                 <p className="mt-1 font-display text-xl font-semibold tracking-tight">{p.name}</p>
                 <p className="mt-1 font-mono text-xs text-muted">
                   {p.brand} · {p.kind}

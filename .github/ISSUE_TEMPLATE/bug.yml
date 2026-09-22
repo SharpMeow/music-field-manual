@@ -1,0 +1,25 @@
+name: Something is broken
+description: A page, widget, link or the print edition does not work.
+labels: [bug]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The address, for example /mpc/loop or /manual.
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you got instead.
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: Safari 18 on iPhone, Chrome 141 on Windows
+    validations:
+      required: true

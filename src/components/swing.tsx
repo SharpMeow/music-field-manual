@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
+import { useWidgetHeading } from "@/lib/heading-level";
 
 export function SwingDemo() {
+  const Heading = useWidgetHeading();
   const [swing, setSwing] = useState(55);
   const [strength, setStrength] = useState(80);
   const delay = ((swing - 50) / 50) * 40;
@@ -10,9 +12,9 @@ export function SwingDemo() {
   return (
     <div className="rounded-xl border border-border bg-surface p-5 shadow-panel">
       <p className="font-mono text-xs uppercase tracking-widest text-muted">Timing Correct</p>
-      <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">
+      <Heading className="mt-1 font-display text-2xl font-semibold tracking-tight">
         {swing}% swing · {strength}% strength
-      </h3>
+      </Heading>
       <p className="mt-2 text-sm text-muted">
         50% is dead straight. 75% is the ceiling. 54–58% at under 100% strength is the genre.
       </p>

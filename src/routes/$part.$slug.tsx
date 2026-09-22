@@ -14,6 +14,9 @@ export const Route = createFileRoute("/$part/$slug")({
     if (!section) throw notFound();
     return { section };
   },
+  head: ({ loaderData }) => ({
+    meta: loaderData ? [{ title: `${loaderData.section.title} · Music Field Manual` }] : [],
+  }),
   component: SectionPage,
   notFoundComponent: Missing,
 });
@@ -30,7 +33,7 @@ function Missing() {
       <h1 className="mt-2 font-display text-4xl font-semibold">That section is not in the book.</h1>
       <Link
         to="/"
-        className="mt-6 inline-flex h-11 items-center rounded-md bg-accent px-4 text-sm text-accent-fg"
+        className="mt-6 inline-flex h-11 items-center rounded-md bg-accent-fill px-4 text-sm text-accent-fg"
       >
         Back to cover
       </Link>
