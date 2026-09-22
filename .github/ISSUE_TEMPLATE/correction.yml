@@ -1,0 +1,30 @@
+name: Something in the book is wrong
+description: A spec, step, firmware note, chord, or number that does not match the real thing.
+labels: [content]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The address, for example /guitar/floyd.
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What the book says
+    validations:
+      required: true
+  - type: textarea
+    id: right
+    attributes:
+      label: What it should say
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: A link to Akai's, Jackson's, or the pedal builder's own page or manual. Corrections without a source are not merged.
+    validations:
+      required: true

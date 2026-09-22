@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Akai MPC support
+    url: https://support.akaipro.com/
+    about: A dead or faulty XL is Akai's to fix, not this book's.
+  - name: Jackson support
+    url: https://support.jacksonguitars.com/hc/en-us
+    about: Warranty and hardware problems with the guitar.
+  - name: Report a security problem
+    url: https://github.com/SharpMeow/music-field-manual/security/advisories/new
+    about: Please report these privately, not as a public issue.

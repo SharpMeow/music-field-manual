@@ -1,5 +1,8 @@
 # Music Field Manual
 
+[![CI](https://github.com/SharpMeow/music-field-manual/actions/workflows/ci.yml/badge.svg)](https://github.com/SharpMeow/music-field-manual/actions/workflows/ci.yml)
+[![License: PolyForm Small Business 1.0.0](https://img.shields.io/badge/license-PolyForm%20Small%20Business%201.0.0-blue)](LICENSE)
+
 A sitting-on-the-desk companion for the **Akai MPC XL** (MPC 3.9.1) and the **Jackson Soloist SL2 DX**.
 
 The XL ships with film on the screen and about 30 GB of content locked behind registration. The Jackson is a Corona Superstrat with a floating Floyd Rose: easy to play, easy to fight if you treat it like a hardtail. Between them sits a board of eight pedals. This is the night you unbox all of it, and the teacher in the room for the weeks after — twenty honest minutes, no heroics, a loop tonight, calluses in a month.
@@ -15,6 +18,19 @@ No account. Checklists, notes, pickup position, and the change-drill log stay in
 **[github.com/SharpMeow/music-field-manual](https://github.com/SharpMeow/music-field-manual)** · PolyForm Small Business 1.0.0 · unofficial, not affiliated with Akai, inMusic, Jackson, or Fender
 
 If you are editing this with a coding agent, start with [`docs/AGENTS.md`](docs/AGENTS.md). The book is typed data. The moving parts are named widgets. That split is the whole reason an agent can touch this without flattening it into a blog.
+
+## Contents
+
+- [What you actually get](#what-you-actually-get)
+- [Why this exists](#why-this-exists)
+- [Who it is for](#who-it-is-for)
+- [Who should skip it](#who-should-skip-it)
+- [Why a coding agent should use this repo](#why-a-coding-agent-should-use-this-repo)
+- [Run it](#run-it)
+- [Commands](#commands)
+- [Layout](#layout)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -98,10 +114,19 @@ npm run dev
 
 Open the URL Vite prints (default port 8080).
 
-```bash
-npm run typecheck
-npm run build
-```
+## Commands
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Dev server on port 8080 |
+| `npm run typecheck` | TypeScript, no output files |
+| `npm run build` | Production build (Vercel output in `.vercel/`) |
+| `npm run preview` | Serve the production build on port 8081 |
+| `npm run check:routes` | With the dev server running: opens every page at desktop and phone width and fails on a broken page, a script error, or sideways scrolling |
+| `npm run lint` | ESLint |
+| `npm run format` | Prettier |
+
+CI runs typecheck, build and `check:routes` on every pull request. `check:routes` uses Playwright's Chromium; run `npx playwright install chromium` once, or point `CHROMIUM_PATH` at a Chromium you already have.
 
 ---
 
@@ -114,7 +139,19 @@ src/routes/        /   /news   /manual   /mpc/:slug   /guitar/:slug
 src/lib/           local store, Web Audio, theme
 public/manuals/    original 27-page PDF
 docs/AGENTS.md     how to edit this without flattening it
+scripts/           route check, build helpers
+.github/           CI, issue and pull request templates
 ```
+
+---
+
+## Contributing
+
+Corrections are welcome when they come with a source. Read [CONTRIBUTING.md](CONTRIBUTING.md) first. Every pull request is reviewed by the owner before it merges.
+
+- Something broken or wrong in the book: [open an issue](https://github.com/SharpMeow/music-field-manual/issues/new/choose)
+- A security problem: [report it privately](SECURITY.md)
+- How we treat each other: [code of conduct](CODE_OF_CONDUCT.md)
 
 ---
 
