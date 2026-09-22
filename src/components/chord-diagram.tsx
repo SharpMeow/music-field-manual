@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CHORDS, type ChordShape } from "@/data/chords";
 import { strum } from "@/lib/audio";
 import { cn } from "@/lib/utils";
+import { useWidgetHeading } from "@/lib/heading-level";
 
 const STR_LABELS = ["E", "A", "D", "G", "B", "e"];
 
@@ -226,6 +227,7 @@ const GROUPS: Array<{ id: ChordShape["group"] | "all"; label: string }> = [
 ];
 
 export function ChordLibrary() {
+  const Heading = useWidgetHeading();
   const [group, setGroup] = useState<ChordShape["group"] | "all">("all");
   const shown =
     group === "all" ? GROUPS.filter((g) => g.id !== "all") : GROUPS.filter((g) => g.id === group);
@@ -258,7 +260,7 @@ export function ChordLibrary() {
       </div>
       {shown.map((g) => (
         <section key={g.id}>
-          <h3 className="font-mono text-xs uppercase tracking-widest text-muted">{g.label}</h3>
+          <Heading className="font-mono text-xs uppercase tracking-widest text-muted">{g.label}</Heading>
           <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {CHORDS.filter((c) => c.group === g.id).map((c) => (
               <ChordCard key={c.id} chord={c} />

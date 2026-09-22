@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useField, useHasHydrated } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { useWidgetHeading } from "@/lib/heading-level";
 
 const FX = [
   {
@@ -62,6 +63,7 @@ const FX = [
 ] as const;
 
 export function DirtChain() {
+  const Heading = useWidgetHeading();
   const dirtOn = useField((s) => s.dirtOn);
   const toggleDirt = useField((s) => s.toggleDirt);
   const hydrated = useHasHydrated();
@@ -145,7 +147,7 @@ export function DirtChain() {
       </div>
       <div className="rounded-xl border border-border bg-surface p-5 shadow-panel">
         <p className="font-mono text-xs uppercase tracking-widest text-muted">{current.slot}</p>
-        <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">{current.name}</h3>
+        <Heading className="mt-1 font-display text-2xl font-semibold tracking-tight">{current.name}</Heading>
         <p className="mt-3 text-sm leading-relaxed text-muted">{current.body}</p>
       </div>
     </div>

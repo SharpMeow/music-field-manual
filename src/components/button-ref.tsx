@@ -2,8 +2,10 @@ import { useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { BUTTONS, STEP_MODES } from "@/data/buttons";
 import { KeyCap } from "@/components/prose";
+import { useWidgetHeading } from "@/lib/heading-level";
 
 export function ButtonRef() {
+  const Heading = useWidgetHeading();
   const [q, setQ] = useState("");
   const rows = useMemo(() => {
     const n = q.trim().toLowerCase();
@@ -59,9 +61,9 @@ export function ButtonRef() {
         ) : null}
       </div>
       <div>
-        <h3 className="font-display text-xl font-semibold tracking-tight">
+        <Heading className="font-display text-xl font-semibold tracking-tight">
           Hold Set + a step button
-        </h3>
+        </Heading>
         <p className="mt-1 text-sm text-muted">
           Step Edit gives per-step velocity, ratchet, probability and nudge. Probability on hats is
           how they stop repeating identically.

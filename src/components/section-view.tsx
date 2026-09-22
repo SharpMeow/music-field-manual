@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { AlertTriangle, ArrowLeft, ArrowRight, Ban, Lightbulb } from "lucide-react";
 import { Prose } from "@/components/prose";
 import { StepList } from "@/components/step-list";
+import { HeadingLevelProvider } from "@/lib/heading-level";
 import { Widget } from "@/components/widgets";
 import { neighbors } from "@/data/catalog";
 import type { Block, Section } from "@/data/types";
@@ -150,7 +151,12 @@ export function SectionView({ section }: { section: Section }) {
       <p className="mt-4 max-w-prose text-base leading-relaxed text-muted">{section.blurb}</p>
       <div className="mt-8 flex flex-col gap-6">
         {section.blocks.map((block, i) => (
-          <BlockView key={i} block={block} part={section.part} />
+          <HeadingLevelProvider
+            key={i}
+            value={section.blocks.slice(0, i).some((b) => b.type === "h") ? 3 : 2}
+          >
+            <BlockView block={block} part={section.part} />
+          </HeadingLevelProvider>
         ))}
       </div>
       <nav

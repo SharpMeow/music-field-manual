@@ -3,6 +3,7 @@ import { useState } from "react";
 import { PEDALS, SUPPLY, chainOf, drawOf, type Pedal } from "@/data/pedals";
 import { useField, useHasHydrated } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import { useWidgetHeading } from "@/lib/heading-level";
 
 const DEFAULT_ON: Record<string, boolean> = Object.fromEntries(
   PEDALS.map((p) => [p.id, p.defaultOn]),
@@ -28,12 +29,13 @@ function Chip({
 }
 
 function Detail({ pedal }: { pedal: Pedal }) {
+  const Heading = useWidgetHeading();
   return (
     <div className="rounded-xl border border-border bg-surface p-5 shadow-panel sm:p-6">
       <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{pedal.kind}</p>
-      <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">
+      <Heading className="mt-1 font-display text-2xl font-semibold tracking-tight">
         {pedal.brand} {pedal.name}
-      </h3>
+      </Heading>
       <p className="mt-1 font-mono text-xs text-subtle">
         {pedal.bought} · {pedal.from}
         {pedal.paid ? ` · ${pedal.paid}` : ""}

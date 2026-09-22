@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatNewsDate, KIND_LABEL, NEWS_CHECKED, newsFor, type NewsItem } from "@/data/news";
 import type { Part } from "@/data/types";
 import { cn } from "@/lib/utils";
+import { HeadingLevelProvider, useWidgetHeading } from "@/lib/heading-level";
 
 function kindVariant(kind: NewsItem["kind"]): "accent" | "ok" | "default" | "solid" {
   if (kind === "firmware" || kind === "owner") return "accent";
@@ -14,6 +15,7 @@ function kindVariant(kind: NewsItem["kind"]): "accent" | "ok" | "default" | "sol
 }
 
 function Item({ item, compact }: { item: NewsItem; compact?: boolean }) {
+  const Heading = useWidgetHeading();
   return (
     <article className="border-t border-border py-4 first:border-t-0 first:pt-0">
       <div className="flex flex-wrap items-center gap-2">
@@ -22,7 +24,7 @@ function Item({ item, compact }: { item: NewsItem; compact?: boolean }) {
         </time>
         <Badge variant={kindVariant(item.kind)}>{KIND_LABEL[item.kind]}</Badge>
       </div>
-      <h3 className="mt-2 font-display text-xl font-semibold tracking-tight text-fg">{item.title}</h3>
+      <Heading className="mt-2 font-display text-xl font-semibold tracking-tight text-fg">{item.title}</Heading>
       {compact ? (
         <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-muted">{item.body}</p>
       ) : (
@@ -124,7 +126,9 @@ export function NewsDesk() {
       </div>
 
       <div className="mt-4 rounded-xl border border-border bg-surface px-5 py-2 shadow-panel sm:px-6">
-        <NewsFeed part={filter} />
+        <HeadingLevelProvider value={2}>
+          <NewsFeed part={filter} />
+        </HeadingLevelProvider>
       </div>
       <p className="sr-only">{items.length} items</p>
     </div>
