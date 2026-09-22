@@ -51,7 +51,7 @@ export const MPC_TECH: Section[] = [
         type: "callout",
         kind: "trap",
         title: "Swing is tempo-invariant in ticks, not in milliseconds",
-        text: "58% at 70 BPM is a longer real-world delay than 58% at 110. The percentage is of the 16th, not of 20 ms. If you dump a 70 BPM swung pattern into a 110 sequence, the tick delays stay, the feel does not. Re-apply TC at the new tempo or Shift Timing by ear.",
+        text: "58% at 70 BPM is a longer real-world delay than 58% at 110. The percentage is of the 8th-note pair, not of 20 ms. If you dump a 70 BPM swung pattern into a 110 sequence, the tick delays stay, the feel does not. Re-apply TC at the new tempo or Shift Timing by ear.",
       },
     ],
   },
