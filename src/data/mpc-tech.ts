@@ -25,9 +25,9 @@ export const MPC_TECH: Section[] = [
         columns: ["Swing", "Even-16th delay", "Closest musical meaning"],
         rows: [
           ["50%", "0 ticks", "Straight 16ths. House, trap, anything that must grid."],
-          ["54–56%", "≈10–14 ticks", "A lean. Modern R&B, quiet boom-bap."],
-          ["58–60%", "≈19–24 ticks", "Classic MPC hip-hop. The number people mean."],
-          ["66%", "≈38 ticks", "Approaching a 16th-triplet shuffle. Gospel, some neo-soul."],
+          ["54–56%", "≈19–29 ticks", "A lean. Modern R&B, quiet boom-bap."],
+          ["58–60%", "≈38–48 ticks", "Classic MPC hip-hop. The number people mean."],
+          ["66%", "≈77 ticks", "Approaching a 16th-triplet shuffle. Gospel, some neo-soul."],
           ["75%", "120 ticks", "Even 16th sits on the next 32nd. Rarely musical."],
         ],
       },
