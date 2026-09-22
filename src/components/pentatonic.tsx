@@ -14,7 +14,7 @@ const NOTES: Note[] = [
   { string: "A", fret: 5, finger: 1, hz: 146.83 },
   { string: "A", fret: 7, finger: 3, hz: 164.81 },
   { string: "D", fret: 5, finger: 1, hz: 196.0 },
-  { string: "D", fret: 7, finger: 3, hz: 220.0 },
+  { string: "D", fret: 7, finger: 3, root: true, hz: 220.0 },
   { string: "G", fret: 5, finger: 1, hz: 261.63 },
   { string: "G", fret: 7, finger: 3, hz: 293.66 },
   { string: "B", fret: 5, finger: 1, hz: 329.63 },
@@ -42,32 +42,35 @@ export function Pentatonic() {
               {FRETS.map((f) => {
                 const note = NOTES.find((n) => n.string === s && n.fret === f);
                 const key = `${s}${f}`;
+                if (!note) {
+                  return (
+                    <span
+                      key={f}
+                      aria-hidden="true"
+                      className="flex h-12 items-center justify-center rounded-sm border border-transparent"
+                    >
+                      <span className="h-px w-full bg-border" />
+                    </span>
+                  );
+                }
                 return (
                   <button
                     key={f}
                     type="button"
-                    disabled={!note}
                     onClick={() => {
-                      if (!note) return;
                       tone(note.hz);
                       setLast(key);
                     }}
                     className={cn(
                       "relative flex h-12 items-center justify-center rounded-sm border",
-                      note
-                        ? note.root
-                          ? "border-accent bg-accent text-accent-fg"
-                          : "border-border bg-elevated text-fg hover:border-muted"
-                        : "border-transparent",
-                      last === key && note && "note-hit ring-1 ring-fg/50",
+                      note.root
+                        ? "border-accent bg-accent text-accent-fg"
+                        : "border-border bg-elevated text-fg hover:border-muted",
+                      last === key && "note-hit ring-1 ring-fg/50",
                     )}
-                    aria-label={note ? `${s} string fret ${f}` : undefined}
+                    aria-label={`${s} string fret ${f}, finger ${note.finger}${note.root ? ", root" : ""}`}
                   >
-                    {note ? (
-                      <span className="font-display text-lg font-semibold">{note.finger}</span>
-                    ) : (
-                      <span className="h-px w-full bg-border" />
-                    )}
+                    <span className="font-display text-lg font-semibold">{note.finger}</span>
                   </button>
                 );
               })}
