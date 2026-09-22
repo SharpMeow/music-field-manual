@@ -1,0 +1,33 @@
+# Keep the build context to what `npm ci` and `npm run build` read.
+.git
+.github
+node_modules
+dist
+.output
+.vercel
+.nitro
+.tanstack
+.wrangler
+.cache
+.pglite
+
+# Local tooling state. The one file `npm run build` reads from .grok/ is the
+# optional app-env.json (VITE_ flags only, no secrets).
+.grok/*
+!.grok/app-env.json
+
+# Never send local config to the image. Runtime settings come from compose.
+.env
+.env.*
+
+*.log
+*.local
+.DS_Store
+screenshots
+artifacts
+attachments
+tmp
+
+Dockerfile
+compose.yaml
+.dockerignore
