@@ -72,7 +72,7 @@ export function ButtonRef() {
               key={m.n}
               className="flex min-h-11 items-center gap-2 rounded-md border border-border bg-surface px-3 py-2"
             >
-              <span className="font-mono text-xs text-accent">{m.n}</span>
+              <span className="font-mono text-xs text-accent-ink">{m.n}</span>
               <span className="text-sm">{m.name}</span>
             </li>
           ))}

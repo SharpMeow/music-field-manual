@@ -74,7 +74,7 @@ export function NewsDesk() {
 
   return (
     <div className="mx-auto w-full max-w-3xl">
-      <p className="font-mono text-xs uppercase tracking-widest text-accent">Dispatch</p>
+      <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">Dispatch</p>
       <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
         Latest for both machines
       </h1>
@@ -150,7 +150,7 @@ function StatusCard({
       params={{ part, slug }}
       className="rounded-xl border border-border bg-surface p-5 shadow-panel transition-colors duration-150 hover:border-muted"
     >
-      <p className="font-mono text-xs uppercase tracking-widest text-accent">{kicker}</p>
+      <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{kicker}</p>
       <p className="mt-1 font-display text-2xl font-semibold tracking-tight text-fg">{title}</p>
       <p className="mt-2 text-sm leading-relaxed text-muted">{body}</p>
     </Link>
@@ -165,7 +165,7 @@ export function HomeNews() {
     <section className="mt-12">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">Dispatch</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">Dispatch</p>
           <h2 className="mt-1 font-display text-3xl font-semibold tracking-tight">
             Latest for both machines
           </h2>
@@ -173,7 +173,7 @@ export function HomeNews() {
         </div>
         <Link
           to="/news"
-          className="inline-flex h-11 items-center gap-1 text-sm text-fg hover:text-accent"
+          className="inline-flex h-11 items-center gap-1 text-sm text-fg hover:text-accent-ink"
         >
           Full desk
           <ArrowRight className="size-4" />
@@ -202,7 +202,7 @@ function Column({
   return (
     <section className="rounded-xl border border-border bg-surface p-5 shadow-panel sm:p-6">
       <div className="flex items-baseline justify-between gap-3">
-        <p className="font-mono text-xs uppercase tracking-widest text-accent">{kicker}</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{kicker}</p>
         <Link
           to="/$part/$slug"
           params={{ part, slug }}

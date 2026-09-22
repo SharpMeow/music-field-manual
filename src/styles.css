@@ -9,6 +9,9 @@
   --color-subtle: #878174;
   --color-accent: #e24a3a;
   --color-accent-fg: #fff8f5;
+  /* Accent for small text, and for fills that carry text. Both pass WCAG AA. */
+  --color-accent-ink: #e55a4c;
+  --color-accent-fill: #d83120;
   --color-border: #2a2622;
   --color-ok: #8a9a74;
   --color-paper: #d8d0c4;
@@ -46,6 +49,8 @@
     --color-subtle: #6b665d;
     --color-accent: #b43328;
     --color-accent-fg: #fff8f5;
+    --color-accent-ink: #ac3126;
+    --color-accent-fill: #b43328;
     --color-border: #ddd4c3;
     --color-ok: #4e5c3c;
     --color-paper: #2e2923;
@@ -147,7 +152,7 @@
     z-index: 80;
     transform: translateY(-150%);
     border-radius: var(--radius-md);
-    background: var(--color-accent);
+    background: var(--color-accent-fill);
     color: var(--color-accent-fg);
     padding: 0.5rem 0.85rem;
     font-size: 0.875rem;
@@ -529,7 +534,7 @@
     color: var(--color-subtle);
   }
   4% {
-    background: var(--color-accent);
+    background: var(--color-accent-fill);
     color: var(--color-accent-fg);
   }
 }

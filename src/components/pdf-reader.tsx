@@ -205,7 +205,7 @@ export function PdfReader() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <p className="font-mono text-xs uppercase tracking-widest text-accent">{SOURCE_PDF.subtitle}</p>
+      <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{SOURCE_PDF.subtitle}</p>
       <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
         {SOURCE_PDF.title}
       </h1>
@@ -285,7 +285,7 @@ export function PdfReader() {
           <a
             href={SOURCE_PDF.src}
             download="MPC-XL-Field-Manual.pdf"
-            className="mt-5 inline-flex h-12 items-center rounded-md bg-accent px-5 text-sm font-medium text-accent-fg"
+            className="mt-5 inline-flex h-12 items-center rounded-md bg-accent-fill px-5 text-sm font-medium text-accent-fg"
           >
             Download PDF
           </a>

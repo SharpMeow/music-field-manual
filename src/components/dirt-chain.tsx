@@ -89,7 +89,7 @@ export function DirtChain() {
                 className={cn(
                   "h-11 rounded-full border px-3 font-mono text-xs",
                   sel === f.id
-                    ? "border-accent bg-accent text-accent-fg"
+                    ? "border-accent bg-accent-fill text-accent-fg"
                     : "border-accent/40 bg-accent/10 text-fg",
                 )}
               >
@@ -117,7 +117,7 @@ export function DirtChain() {
                 onClick={() => setSel(f.id)}
                 className="min-w-0 flex-1 text-left"
               >
-                <p className="font-mono text-xs uppercase tracking-widest text-accent">{f.slot}</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{f.slot}</p>
                 <p className="mt-1 font-display text-xl font-semibold tracking-tight">{f.name}</p>
                 <p className="mt-1 font-mono text-xs text-muted">{f.place}</p>
               </button>

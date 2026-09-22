@@ -64,7 +64,7 @@ export function Pentatonic() {
                     className={cn(
                       "relative flex h-12 items-center justify-center rounded-sm border",
                       note.root
-                        ? "border-accent bg-accent text-accent-fg"
+                        ? "border-accent bg-accent-fill text-accent-fg"
                         : "border-border bg-elevated text-fg hover:border-muted",
                       last === key && "note-hit ring-1 ring-fg/50",
                     )}

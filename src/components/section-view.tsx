@@ -80,7 +80,7 @@ function BlockView({ block, part }: { block: Block; part: Section["part"] }) {
           <p
             className={cn(
               "flex items-center gap-2 font-mono text-xs uppercase tracking-widest",
-              kind === "tip" ? "text-ok" : "text-accent",
+              kind === "tip" ? "text-ok" : "text-accent-ink",
             )}
           >
             <Icon className="size-3.5" strokeWidth={2} aria-hidden />
@@ -137,12 +137,12 @@ export function SectionView({ section }: { section: Section }) {
         <Link
           to="/$part/$slug"
           params={{ part: section.part, slug: partHome }}
-          className="hover:text-accent"
+          className="hover:text-accent-ink"
         >
           {partLabel}
         </Link>
         <span className="mx-2 text-subtle">/</span>
-        <span className="text-accent">{section.kicker}</span>
+        <span className="text-accent-ink">{section.kicker}</span>
       </p>
       <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
         {section.title}

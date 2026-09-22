@@ -187,7 +187,7 @@ export function HardwareMap() {
         className="rounded-xl border border-border bg-surface p-5 shadow-panel"
         aria-live="polite"
       >
-        <p className="font-mono text-xs uppercase tracking-widest text-accent">{zone.label}</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-accent-ink">{zone.label}</p>
         <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">{zone.title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-muted">{zone.body}</p>
       </aside>
