@@ -21,7 +21,7 @@ An agent that treats this as "paste the official manual into a page" will throw 
 Two rules that are easy to break by accident:
 
 - **`mA` is nullable and that is load-bearing.** Builders publish a *minimum supply rating* far more often than a measured draw, and some publish nothing at all. A `null` means nobody published a figure. Do not fill one in with a plausible number for a pedal of that type: the widget totals these into a budget a reader will size a power supply against, and a guess there is worse than a gap. Where two published figures disagree, take the larger and say so in `power`.
-- **Manuals are linked, not vendored.** `manual.href` points at the builder's own manual index or product page. Do not commit somebody else's PDF into an MIT repo, and do not link a URL you have not seen resolve.
+- **Manuals are linked, not vendored.** `manual.href` points at the builder's own manual index or product page. Do not commit somebody else's PDF into a PolyForm Small Business repo, and do not link a URL you have not seen resolve.
 
 Pedals belong to the guitar part. `/guitar/board` and `/guitar/chain` are the board's chapters and `/mpc/board` is how it meets the sampler. Do not promote pedals to a third `Part`.
 
@@ -30,7 +30,7 @@ Pedals belong to the guitar part. `/guitar/board` and `/guitar/chain` are the bo
 - Other samplers, other guitars, or "works with any MPC"
 - Accounts, Postgres, or a comments thread
 - A crawler pointed at Akai or Jackson. Dispatch is curated. Date and source, or it does not go in `news.ts`
-- Guitar firmware. There is none. Say so; do not invent a updater
+- Guitar firmware. There is none. Say so; do not invent an updater
 - Affiliation with Akai, inMusic, Jackson, or Fender
 
 ## Edit map
