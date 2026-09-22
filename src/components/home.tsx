@@ -214,7 +214,7 @@ function Stat({
         {value.n}
         <span className="text-lg text-muted">/{value.t}</span>
       </p>
-      <Progress value={value.pct} className="mt-3" />
+      <Progress value={value.pct} aria-label={`${label} progress`} className="mt-3" />
     </Link>
   );
 }

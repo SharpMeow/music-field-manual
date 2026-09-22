@@ -153,7 +153,10 @@ export function SectionView({ section }: { section: Section }) {
           <BlockView key={i} block={block} part={section.part} />
         ))}
       </div>
-      <nav className="mt-12 flex items-stretch justify-between gap-3 border-t border-border pt-6">
+      <nav
+        aria-label="Previous and next chapter"
+        className="mt-12 flex items-stretch justify-between gap-3 border-t border-border pt-6"
+      >
         {prev ? (
           <Link
             to="/$part/$slug"

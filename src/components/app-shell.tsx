@@ -242,7 +242,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 Music Field Manual
               </span>
             </Link>
-            <nav className="ml-2 hidden items-center gap-1 md:flex">
+            <nav aria-label="Sections" className="ml-2 hidden items-center gap-1 md:flex">
               <Link
                 to="/$part/$slug"
                 params={{ part: "mpc", slug: "setup" }}

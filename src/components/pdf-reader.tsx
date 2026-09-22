@@ -303,6 +303,7 @@ export function PdfReader() {
                 key={i}
                 data-pdf-page={i + 1}
                 className="pdf-sheet"
+                role="img"
                 aria-label={`Page ${i + 1}`}
               >
                 <canvas
